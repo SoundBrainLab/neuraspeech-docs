@@ -1,0 +1,4 @@
+/* Change the blue header background in ReadTheDocs theme */
+.wy-side-nav-search {
+    background-color: #444444 !important;   /* light gray */
+}

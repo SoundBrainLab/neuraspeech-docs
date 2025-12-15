@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Preparing your data - PRPToolbox</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../assets/stylesheets/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Preparing your data";
+        var mkdocs_page_input_path = "prepare_data.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="..">
+          <img src="../assets/logo.svg" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../install/">Installation</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Preparing your data</a>
+    <ul class="current">
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../user-guide/prp_basics/">PRP basics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../user-guide/f_statistic/">F-statistic of manner separability</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">PRPToolbox</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Getting Started</li>
+      <li class="breadcrumb-item active">Preparing your data</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/zc-guo/prptoolbox/edit/master/docs/prepare_data.md">Edit on zc-guo/prptoolbox</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="preparing-your-data">Preparing your data</h1>
+<p>Once the environment is installed, make sure that you've prepared your EEG data in a format expected by the toolbox. Specifically, it is assumed that:</p>
+<ol>
+<li>
+<p>You've done all the preprocessing (e.g., filtering, ICA, resampling, etc).</p>
+</li>
+<li>
+<p><strong>You've extracted all EEG responses time-locked to all instances of each phoneme and saved the results to a .mat file.</strong></p>
+</li>
+</ol>
+<p>For example, if your clean EEG have 32 channels with 128-Hz sampling rate and you extract PRPs with a duration of 0.5 s for 10,000 phoneme instances, then the .mat file should contain a 3D EEG array with shape of 10000 x 32 x 64. In the file, there should also be cell object with shape like 10000 x 1 containing the phoneme label for each corresponding EEG response. By default, it is assumed that the field names of the EEG array and labels are "eegs" and "phones", respetively.</p>
+<p>It is recommended that you name the .mat file following the BIDS convention. For example, data from subject 01 completing the Alice task in noise condition may be saved as "sub-01_task-alice_cond-noise.mat". Put all .mat files like this in the same folder.</p>
+<p>Finally, you need to have a .csv file providing the electrode names and x, y, z coordinates of the electrodes for the montage you used to collect EEG. The electrode name is in the "ch_name" column and the next three columns are the coordinates:</p>
+<table>
+<thead>
+<tr>
+<th>ch_name</th>
+<th>x</th>
+<th>y</th>
+<th>z</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fp1</td>
+<td>-27.03339386</td>
+<td>83.20023346</td>
+<td>-3.054935217</td>
+</tr>
+<tr>
+<td>AF3</td>
+<td>-35.56089783</td>
+<td>76.26059723</td>
+<td>24.12797737</td>
+</tr>
+<tr>
+<td>F7</td>
+<td>-70.7743454</td>
+<td>51.42057037</td>
+<td>-3.054935217</td>
+</tr>
+<tr>
+<td>F3</td>
+<td>-47.70734787</td>
+<td>58.91366959</td>
+<td>43.76761246</td>
+</tr>
+<tr>
+<td>FC1</td>
+<td>-32.80028152</td>
+<td>32.80028152</td>
+<td>74.23407745</td>
+</tr>
+<tr>
+<td>FC5</td>
+<td>-77.72145081</td>
+<td>29.83447075</td>
+<td>27.04987144</td>
+</tr>
+<tr>
+<td>...</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Because this PRP data extraction step is highly specific to the dataset and how the continuous speech sound tracks are presented, a standard pipeline for the data extraction has not been implemented yet in the toolbox. Please contact Zhe-chen Guo (zcguo@northwestern.edu) for an example script. </p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../install/" class="btn btn-neutral float-left" title="Installation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../user-guide/prp_basics/" class="btn btn-neutral float-right" title="PRP basics">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/zc-guo/prptoolbox" class="fa fa-code-fork" style="color: #fcfcfc"> zc-guo/prptoolbox</a>
+        </span>
+    
+    
+      <span><a href="../install/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../user-guide/prp_basics/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
