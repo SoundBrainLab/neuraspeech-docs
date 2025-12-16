@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>PRP basics - PRPToolbox</title>
+    <title>PRP basics - Neuraspeech</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -87,7 +87,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">PRPToolbox</a>
+          <a href="../..">Neuraspeech</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -97,7 +97,7 @@
           <li class="breadcrumb-item">User Guide</li>
       <li class="breadcrumb-item active">PRP basics</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/zc-guo/prptoolbox/edit/master/docs/user-guide/prp_basics.ipynb">Edit on zc-guo/prptoolbox</a>
+          <a href="https://github.com/zc-guo/neuraspeech/edit/master/docs/user-guide/prp_basics.ipynb">Edit on zc-guo/neuraspeech</a>
     </li>
   </ul>
   <hr/>
@@ -572,7 +572,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Once you have the Python environment set up and EEG data processed, you're ready to load in and take a look at the PRPs. Open an analysis script/notebook and activate the Python environment you installed. In VS Code, for example, choose the environment for the kernel in the top right. Then, import <code>prptoolbox</code> (should be in the same directory as your analysis script) and run <code>PRPData</code>.</p>
+<p>Once you have the Python environment set up and EEG data processed, you're ready to load in and take a look at the PRPs. Open an analysis script/notebook (should be in the same directory as README.md and the "neuraspeech" folder) and activate the Python environment you installed. In VS Code, for example, choose the environment for the kernel in the top right. Then, import <code>neuraspeech</code> and run <code>PRPData</code>.</p>
 <p>Here is an example from a small dataset with 2 subjects. Each subject completed the EEG continuous speech listening experiment in 2 sessions, in 2 presentation modes (monaural, binaural), and at 2 intensity levels (60 dB, 75 dB). This gives 2 (subjects) x 2 (sessions) x 2 (presentation modes) x 2 (intensity levels) = 16 data files.</p>
 </div>
 </div>
@@ -583,7 +583,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-1">
@@ -596,12 +596,12 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">prptoolbox</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ptb</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">neuraspeech</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ns</span>
 
 <span class="n">path_to_data</span> <span class="o">=</span> <span class="s1">'examples/dataset'</span>
 <span class="n">path_to_montage_file</span> <span class="o">=</span> <span class="s1">'examples/dataset/montage.csv'</span>
 
-<span class="n">prps</span> <span class="o">=</span> <span class="n">ptb</span><span class="o">.</span><span class="n">PRPData</span><span class="p">(</span>
+<span class="n">prps</span> <span class="o">=</span> <span class="n">ns</span><span class="o">.</span><span class="n">PRPData</span><span class="p">(</span>
     <span class="n">data_path</span> <span class="o">=</span> <span class="n">path_to_data</span><span class="p">,</span> 
     <span class="n">sr</span> <span class="o">=</span> <span class="mi">128</span><span class="p">,</span>                       <span class="c1"># Sampling rate of processed EEG</span>
     <span class="n">time_win</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>          <span class="c1"># Time window of the PRP relative to phoneme onset</span>
@@ -610,12 +610,12 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     <span class="n">montage_path</span> <span class="o">=</span> <span class="n">path_to_montage_file</span>
     <span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-1">import prptoolbox as ptb
+<div class="clipboard-copy-txt" id="cell-1">import neuraspeech as ns
 
 path_to_data = 'examples/dataset'
 path_to_montage_file = 'examples/dataset/montage.csv'
 
-prps = ptb.PRPData(
+prps = ns.PRPData(
     data_path = path_to_data, 
     sr = 128,                       # Sampling rate of processed EEG
     time_win = (0.0, 0.5),          # Time window of the PRP relative to phoneme onset
@@ -634,7 +634,7 @@ prps = ptb.PRPData(
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>100%|██████████| 16/16 [00:06&lt;00:00,  2.48it/s]</pre>
+<pre>100%|██████████| 16/16 [00:06&lt;00:00,  2.31it/s]</pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -661,7 +661,7 @@ prps = ptb.PRPData(
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>By default, <code>PRPData</code> assumes that the data are named following the BIDS convention. That is, information such as subject ID, condition code, etc. are stored as key-value pairs separated by undercores "_" and "-", respectively. For example, data from subject 01 completing the Alice listening task in noise condition may be saved as "sub-01_task-alice_cond-noise.mat". If you use a different file naming convention, you can supply a custom file naming parsing function (see below).</p>
+<p>By default, <code>PRPData</code> assumes that the data are named following the BIDS convention. That is, information such as subject ID, condition code, etc. are stored as key-value pairs separated by undercores "_" and "-", respectively. Again, for example, data from subject 01 completing the Alice listening task in noise condition may be saved as "sub-01_task-alice_cond-noise.mat". If you use a different file naming convention, you can supply a custom file naming parsing function (see below).</p>
 <p>Also, it is assumed that the EEG sampling rate is 128 Hz with time window from 0.0 to 0.5 s and the fieldnames of EEG and phoneme labels in the .mat files are 'eegs' and 'phones'. So unless any of these is different for your data, you can leave these arguments out and don't have to specify them.</p>
 </div>
 </div>
@@ -683,7 +683,7 @@ prps = ptb.PRPData(
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-2">
@@ -747,7 +747,7 @@ Dataset: 592 cases
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-3">
@@ -802,7 +802,7 @@ NDVars: PRP
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-4">
@@ -875,7 +875,7 @@ NDVars: PRP
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-5">
@@ -952,7 +952,7 @@ Dataset: 248 cases
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-6">
@@ -1038,7 +1038,7 @@ Dataset: 144 cases
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-7">
@@ -1052,7 +1052,7 @@ Dataset: 144 cases
 </clipboard-copy>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># Load the PRPs again</span>
-<span class="n">prps</span> <span class="o">=</span> <span class="n">ptb</span><span class="o">.</span><span class="n">PRPData</span><span class="p">(</span>
+<span class="n">prps</span> <span class="o">=</span> <span class="n">ns</span><span class="o">.</span><span class="n">PRPData</span><span class="p">(</span>
     <span class="n">data_path</span> <span class="o">=</span> <span class="n">path_to_data</span><span class="p">,</span> 
     <span class="n">montage_path</span> <span class="o">=</span> <span class="n">path_to_montage_file</span>
     <span class="p">)</span>
@@ -1065,7 +1065,7 @@ Dataset: 144 cases
 <span class="n">prps</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">'examples/saved/prps_saved.pkl'</span><span class="p">)</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-7"># Load the PRPs again
-prps = ptb.PRPData(
+prps = ns.PRPData(
     data_path = path_to_data, 
     montage_path = path_to_montage_file
     )
@@ -1087,7 +1087,7 @@ prps.save('examples/saved/prps_saved.pkl')</div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>100%|██████████| 16/16 [00:06&lt;00:00,  2.58it/s]</pre>
+<pre>100%|██████████| 16/16 [00:06&lt;00:00,  2.36it/s]</pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -1114,7 +1114,7 @@ Saved to examples/saved/prps_saved.pkl
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-8">
@@ -1128,10 +1128,10 @@ Saved to examples/saved/prps_saved.pkl
 </clipboard-copy>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># Load it again</span>
-<span class="n">prps</span> <span class="o">=</span> <span class="n">ptb</span><span class="o">.</span><span class="n">PRPData</span><span class="o">.</span><span class="n">from_pickle</span><span class="p">(</span><span class="s1">'examples/saved/prps_saved.pkl'</span><span class="p">)</span>
+<span class="n">prps</span> <span class="o">=</span> <span class="n">ns</span><span class="o">.</span><span class="n">PRPData</span><span class="o">.</span><span class="n">from_pickle</span><span class="p">(</span><span class="s1">'examples/saved/prps_saved.pkl'</span><span class="p">)</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-8"># Load it again
-prps = ptb.PRPData.from_pickle('examples/saved/prps_saved.pkl')</div>
+prps = ns.PRPData.from_pickle('examples/saved/prps_saved.pkl')</div>
 </div>
 </div>
 </div>
@@ -1167,7 +1167,7 @@ prps = ptb.PRPData.from_pickle('examples/saved/prps_saved.pkl')</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-9">
@@ -1253,7 +1253,7 @@ prps.plot_manner_prps(
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-10">
@@ -1324,7 +1324,7 @@ prps.plot_manner_prps(
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-11">
@@ -1408,7 +1408,7 @@ prps.plot_manner_prps(
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="1-custom-file-name-parsing">1. Custom file name parsing<a class="anchor-link" href="#1-custom-file-name-parsing">¶</a></h3><p>BY default, <code>PRPData</code> assumes that metadata of EEG are encoded in the file names in the BIDS format. You can define a custom file name parsing function to overwrite this behavoior. In the example above, the "task" factor consists of both intensity and presentation mode information (e.g., "60bi"). If you want to have separate variabls indicating intensity and presentation mode in the output, you can create a function like the following and pass it to <code>PRPData</code>. Essentially, all this function needs to do is just return a dictionary where key-value pairs are factor names and their corresponding values. This utility allows you to define your own rules for understanding the file names, making it more convenient for subsequent analyses</p>
+<h3 id="1-custom-file-name-parsing">1. Custom file name parsing<a class="anchor-link" href="#1-custom-file-name-parsing">¶</a></h3><p>BY default, <code>PRPData</code> assumes that metadata of EEG are encoded in the file names in the BIDS format. You can define a custom file name parsing function to override this behavoior. In the example above, the "task" factor consists of both intensity and presentation mode information (e.g., "60bi"). If you want to have separate variabls indicating intensity and presentation mode in the output, you can create a function like the following and pass it to <code>PRPData</code>. Essentially, all this function needs to do is just return a dictionary where key-value pairs are factor names and their corresponding values. This utility allows you to define your own rules for understanding the file names, making it more convenient for subsequent analyses</p>
 </div>
 </div>
 </div>
@@ -1418,7 +1418,7 @@ prps.plot_manner_prps(
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-12">
@@ -1465,7 +1465,7 @@ def parse_filename(fn):
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-13">
@@ -1478,13 +1478,13 @@ def parse_filename(fn):
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">prps</span> <span class="o">=</span> <span class="n">ptb</span><span class="o">.</span><span class="n">PRPData</span><span class="p">(</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">prps</span> <span class="o">=</span> <span class="n">ns</span><span class="o">.</span><span class="n">PRPData</span><span class="p">(</span>
     <span class="n">data_path</span> <span class="o">=</span> <span class="n">path_to_data</span><span class="p">,</span> 
     <span class="n">montage_path</span> <span class="o">=</span> <span class="n">path_to_montage_file</span><span class="p">,</span>
     <span class="n">metadata_fn</span> <span class="o">=</span> <span class="n">parse_filename</span>        <span class="c1"># Pass that custom function here</span>
     <span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-13">prps = ptb.PRPData(
+<div class="clipboard-copy-txt" id="cell-13">prps = ns.PRPData(
     data_path = path_to_data, 
     montage_path = path_to_montage_file,
     metadata_fn = parse_filename        # Pass that custom function here
@@ -1500,7 +1500,7 @@ def parse_filename(fn):
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>100%|██████████| 16/16 [00:06&lt;00:00,  2.39it/s]</pre>
+<pre>100%|██████████| 16/16 [00:06&lt;00:00,  2.31it/s]</pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -1526,7 +1526,7 @@ def parse_filename(fn):
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [19]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-14">
@@ -1618,7 +1618,7 @@ Dataset: 592 cases
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [21]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-15">
@@ -1715,7 +1715,7 @@ NDVars: PRP
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [22]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-16">
@@ -1825,7 +1825,7 @@ prps.plot_manner_prps(
   <span class="rst-current-version" data-toggle="rst-current-version">
     
         <span>
-          <a href="https://github.com/zc-guo/prptoolbox" class="fa fa-code-fork" style="color: #fcfcfc"> zc-guo/prptoolbox</a>
+          <a href="https://github.com/zc-guo/neuraspeech" class="fa fa-code-fork" style="color: #fcfcfc"> zc-guo/neuraspeech</a>
         </span>
     
     

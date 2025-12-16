@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>F-statistic of manner separability - PRPToolbox</title>
+    <title>F-statistic of manner separability - Neuraspeech</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -75,7 +75,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">PRPToolbox</a>
+          <a href="../..">Neuraspeech</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -85,7 +85,7 @@
           <li class="breadcrumb-item">User Guide</li>
       <li class="breadcrumb-item active">F-statistic of manner separability</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/zc-guo/prptoolbox/edit/master/docs/user-guide/f_statistic.ipynb">Edit on zc-guo/prptoolbox</a>
+          <a href="https://github.com/zc-guo/neuraspeech/edit/master/docs/user-guide/f_statistic.ipynb">Edit on zc-guo/neuraspeech</a>
     </li>
   </ul>
   <hr/>
@@ -565,7 +565,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=6fb54437">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=ba0c6286">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -583,11 +583,13 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">prptoolbox</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ptb</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ptb</span><span class="o">.</span><span class="n">PHON2MANNER</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">neuraspeech</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ns</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">ns</span><span class="o">.</span><span class="n">PHON2MANNER</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-1">import prptoolbox as ptb
-print(ptb.PHON2MANNER)</div>
+<div class="clipboard-copy-txt" id="cell-1">import neuraspeech as ns
+for k, v in ns.PHON2MANNER.items():
+    print(f'{k}: {v}')</div>
 </div>
 </div>
 </div>
@@ -599,7 +601,46 @@ print(ptb.PHON2MANNER)</div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>{'AA': 'Vowel', 'AE': 'Vowel', 'AH': 'Vowel', 'AO': 'Vowel', 'AW': 'Vowel', 'AY': 'Vowel', 'EH': 'Vowel', 'ER': 'Vowel', 'EY': 'Vowel', 'IH': 'Vowel', 'IY': 'Vowel', 'OW': 'Vowel', 'OY': 'Vowel', 'UH': 'Vowel', 'UW': 'Vowel', 'L': 'Nasal-approximant', 'M': 'Nasal-approximant', 'N': 'Nasal-approximant', 'NG': 'Nasal-approximant', 'R': 'Nasal-approximant', 'W': 'Nasal-approximant', 'Y': 'Nasal-approximant', 'DH': 'Fricative', 'F': 'Fricative', 'HH': 'Fricative', 'S': 'Fricative', 'SH': 'Fricative', 'V': 'Fricative', 'Z': 'Fricative', 'TH': 'Fricative', 'ZH': 'Fricative', 'B': 'Stop', 'D': 'Stop', 'G': 'Stop', 'K': 'Stop', 'P': 'Stop', 'T': 'Stop', 'CH': 'Stop', 'JH': 'Stop', 'Q': 'Stop'}
+<pre>AA: Vowel
+AE: Vowel
+AH: Vowel
+AO: Vowel
+AW: Vowel
+AY: Vowel
+EH: Vowel
+ER: Vowel
+EY: Vowel
+IH: Vowel
+IY: Vowel
+OW: Vowel
+OY: Vowel
+UH: Vowel
+UW: Vowel
+L: Nasal-approximant
+M: Nasal-approximant
+N: Nasal-approximant
+NG: Nasal-approximant
+R: Nasal-approximant
+W: Nasal-approximant
+Y: Nasal-approximant
+DH: Fricative
+F: Fricative
+HH: Fricative
+S: Fricative
+SH: Fricative
+V: Fricative
+Z: Fricative
+TH: Fricative
+ZH: Fricative
+B: Stop
+D: Stop
+G: Stop
+K: Stop
+P: Stop
+T: Stop
+CH: Stop
+JH: Stop
+Q: Stop
 </pre>
 </div>
 </div>
@@ -638,20 +679,20 @@ print(ptb.PHON2MANNER)</div>
 </clipboard-copy>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># Load in the PRP data</span>
-<span class="n">prps</span> <span class="o">=</span> <span class="n">ptb</span><span class="o">.</span><span class="n">PRPData</span><span class="o">.</span><span class="n">from_pickle</span><span class="p">(</span><span class="s1">'examples\saved\prps_saved.pkl'</span><span class="p">)</span>
+<span class="n">prps</span> <span class="o">=</span> <span class="n">ns</span><span class="o">.</span><span class="n">PRPData</span><span class="o">.</span><span class="n">from_pickle</span><span class="p">(</span><span class="s1">'examples\saved\prps_saved.pkl'</span><span class="p">)</span>
 
 <span class="c1"># Compute F</span>
-<span class="n">fstats</span> <span class="o">=</span> <span class="n">ptb</span><span class="o">.</span><span class="n">FStatistic</span><span class="p">(</span>
+<span class="n">fstats</span> <span class="o">=</span> <span class="n">ns</span><span class="o">.</span><span class="n">FStatistic</span><span class="p">(</span>
     <span class="n">prps</span><span class="p">,</span>                   <span class="c1"># Pass the PRPData object here</span>
     <span class="n">by</span> <span class="o">=</span> <span class="s1">'filename'</span><span class="p">,</span>        <span class="c1"># Default to 'filename', meaning that the results will be computed separately for each filename value</span>
     <span class="n">category</span> <span class="o">=</span> <span class="s1">'manner'</span>     <span class="c1"># Defualt to 'manner'. Name of variable indicatings cateogry labels.</span>
     <span class="p">)</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-2"># Load in the PRP data
-prps = ptb.PRPData.from_pickle('examples\saved\prps_saved.pkl')
+prps = ns.PRPData.from_pickle('examples\saved\prps_saved.pkl')
 
 # Compute F
-fstats = ptb.FStatistic(
+fstats = ns.FStatistic(
     prps,                   # Pass the PRPData object here
     by = 'filename',        # Default to 'filename', meaning that the results will be computed separately for each filename value
     category = 'manner'     # Defualt to 'manner'. Name of variable indicatings cateogry labels.
@@ -674,7 +715,7 @@ fstats = ptb.FStatistic(
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>100%|██████████| 16/16 [01:51&lt;00:00,  6.95s/it]</pre>
+<pre>100%|██████████| 16/16 [01:44&lt;00:00,  6.53s/it]</pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -728,13 +769,13 @@ fstats = ptb.FStatistic(
 <span class="n">fstats</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">'examples/saved/fstats_saved.pkl'</span><span class="p">)</span>
 
 <span class="c1"># Load it again</span>
-<span class="n">fstats</span> <span class="o">=</span> <span class="n">ptb</span><span class="o">.</span><span class="n">FStatistic</span><span class="o">.</span><span class="n">from_pickle</span><span class="p">(</span><span class="s1">'examples/saved/fstats_saved.pkl'</span><span class="p">)</span>
+<span class="n">fstats</span> <span class="o">=</span> <span class="n">ns</span><span class="o">.</span><span class="n">FStatistic</span><span class="o">.</span><span class="n">from_pickle</span><span class="p">(</span><span class="s1">'examples/saved/fstats_saved.pkl'</span><span class="p">)</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-3"># Save the F-stat results
 fstats.save('examples/saved/fstats_saved.pkl')
 
 # Load it again
-fstats = ptb.FStatistic.from_pickle('examples/saved/fstats_saved.pkl')</div>
+fstats = ns.FStatistic.from_pickle('examples/saved/fstats_saved.pkl')</div>
 </div>
 </div>
 </div>
@@ -1218,7 +1259,7 @@ fstats_anova_res.find_clusters(0.05)</div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>Permutation test: 100%|██████████| 10000/10000 [00:09&lt;00:00, 1023.05 permutations/s]
+<pre>Permutation test: 100%|██████████| 10000/10000 [00:09&lt;00:00, 1028.90 permutations/s]
 </pre>
 </div>
 </div>
@@ -1288,7 +1329,7 @@ fstats_anova_res.find_clusters(0.05)</div>
   <span class="rst-current-version" data-toggle="rst-current-version">
     
         <span>
-          <a href="https://github.com/zc-guo/prptoolbox" class="fa fa-code-fork" style="color: #fcfcfc"> zc-guo/prptoolbox</a>
+          <a href="https://github.com/zc-guo/neuraspeech" class="fa fa-code-fork" style="color: #fcfcfc"> zc-guo/neuraspeech</a>
         </span>
     
     
