@@ -50,6 +50,12 @@
               <ul class="current">
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">Installation</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#step-1-install-mamba">Step 1. Install Mamba</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#step-2-download-repository">Step 2. Download repository</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#step-3-create-environment">Step 3: Create environment</a>
+    </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../prepare_data/">Preparing your data</a>
@@ -89,25 +95,28 @@
               
                 <h1 id="installation">Installation</h1>
 <p>This toolbox is built using primarily <code>eelbrain</code>. The following guide will walk you through how to install and set up the Python environment for the toolbox.</p>
+<h2 id="step-1-install-mamba">Step 1. Install Mamba</h2>
+<p>We use mamba to create and manage the Conda environment.</p>
+<p>If you already have Anaconda installed, install <code>mamba</code> into the base environment from <code>conda-forge</code>:</p>
+<div class="highlight"><pre><span></span><code>conda<span class="w"> </span>install<span class="w"> </span>-n<span class="w"> </span>base<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>mamba
+</code></pre></div>
+<p>If you do not have any Conda distirbutions installed:</p>
 <ol>
-<li>
-<p>Go to the <a href="https://conda-forge.org/download/">Miniforge download page</a> and download the installer for your system (Windows, macOS, or Linux) and install it.</p>
-</li>
-<li>
-<p>Download the Gitbub repository of the toolbox and unzip it. </p>
-</li>
-<li>
-<p>Inside, you should see a folder called "neuraspeech" and documents like README.md, requirements.yml, etc.</p>
-</li>
-<li>
-<p>Open a terminal or Anaconda Prompt, navigate to the directory of that folder (<code>cd PATH/TO/THE/FOLDER</code>), and then run:</p>
-</li>
+<li>Go to the <a href="https://conda-forge.org/download/">Miniforge download page</a></li>
+<li>Download and install the installer for your operating system (Windows, macOS, or Linux)</li>
+<li>During installation, accept the default options</li>
 </ol>
+<p>Then you should have <code>mamba</code>.</p>
+<p>You can verify <code>mamba</code> installation by running:</p>
+<div class="highlight"><pre><span></span><code>mamba<span class="w"> </span>--version
+</code></pre></div>
+<h2 id="step-2-download-repository">Step 2. Download repository</h2>
+<p>Download the Gitbub repository of the toolbox and unzip it. Inside, you should see a folder called "neuraspeech" and documents like README.md, requirements.yml, etc.</p>
+<h2 id="step-3-create-environment">Step 3: Create environment</h2>
+<p>Open a terminal or Anaconda Prompt, navigate to the directory of that folder (<code>cd PATH/TO/THE/FOLDER</code>), and then run:</p>
 <div class="highlight"><pre><span></span><code>mamba<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>environment.yml
 </code></pre></div>
-<ol>
-<li>This will create a Python environment called "neuraspeech" with required dependencies installed. You can activate this environment in the prompt or terminal using:</li>
-</ol>
+<p>This will create a Python environment called "neuraspeech" with required dependencies installed. You can activate this environment in the prompt or terminal using:</p>
 <div class="highlight"><pre><span></span><code>conda<span class="w"> </span>activate<span class="w"> </span>neuraspeech
 </code></pre></div>
 <p>If you're using a code editor like VS Code, you can choose the installed environment by selecting its name in the top right corner.</p>
