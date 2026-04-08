@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="Toolbox for analyzing phoneme-related potentials" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="Toolbox for analyzing EEG to continuous speech" />
       <link rel="shortcut icon" href="img/favicon.ico" />
     <title>Neuraspeech</title>
     <link rel="stylesheet" href="css/theme.css" />
@@ -58,14 +58,19 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="install/">Installation</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="prepare_data/">Preparing your data</a>
+              </ul>
+              <p class="caption"><span class="caption-text">Phoneme-Related Potential</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="prp/prepare_data/">Preparing your data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="prp/prp_basics/">PRP basics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="prp/f_statistic/">F-statistic of manner separability</a>
                   </li>
               </ul>
-              <p class="caption"><span class="caption-text">User Guide</span></p>
+              <p class="caption"><span class="caption-text">Temporal Response Function</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="user-guide/prp_basics/">PRP basics</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="user-guide/f_statistic/">F-statistic of manner separability</a>
+                  <li class="toctree-l1"><a class="reference internal" href="trf/quick_guide/">Quick guide</a>
                   </li>
               </ul>
       </div>
@@ -93,15 +98,17 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="neuraspeech">NeuraSpeech</h1>
-<p>NeuraSpeech is a Python toolbox for analyzing <strong>phoneme-related potentials (PRPs)</strong> from EEG data during continuous speech listening.</p>
+<p>NeuraSpeech is a Python toolbox for analyzing EEG responses during continuous speech listening. It includes utilities for <strong>phoneme-related potential (PRP) analysis</strong> and <strong>temporal response function (TRF) modeling</strong>.</p>
 <p><em>The package is currently private and under development. Please contact Zhe-chen Guo (zcguo@northwestern.edu) for access or quesitons.</em></p>
 <h2 id="features">Features</h2>
 <ul>
 <li>PRP dataset handling</li>
 <li>Topographic and time-course visualization</li>
 <li>Phoneme manner separability analyses (F-statistic, machine-learning classification, etc.)</li>
+<li>TRF estimation with support for parallel processing</li>
 </ul>
 <h2 id="whats-new">What's new?</h2>
+<p>04/07/2026: [Version 0.2.0] Now including a <code>trf</code> module for running TRF analysis. A quick guide for using it is available. More detailed documentation will be provided in the future.</p>
 <p>03/24/2026: Added a get_values() function for more convinently getting PRP amplitude and F-statistic values at specific time points/intervals and at specific electrodes. See <em>Extracting PRP amplitudes</em> and <em>Extracting F-statistics</em> in the PRP basics and F-statistic sections.</p>
 <p>01/15/2026: Added a combine() utility to concatenate multiple datasets (see PRP basics); fixed a bug with recode().</p>
 <h2 id="quick-example">Quick example</h2>
@@ -168,5 +175,5 @@
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2026-03-25 03:47:39.012050+00:00
+Build Date UTC : 2026-04-08 03:37:05.047367+00:00
 -->
