@@ -54,12 +54,16 @@
     </ul>
                 </li>
               </ul>
-              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="history/">Update history</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Getting started</span></p>
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="install/">Installation</a>
                   </li>
               </ul>
-              <p class="caption"><span class="caption-text">Phoneme-Related Potential</span></p>
+              <p class="caption"><span class="caption-text">Phoneme-related potential</span></p>
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="prp/prepare_data/">Preparing your data</a>
                   </li>
@@ -68,7 +72,7 @@
                   <li class="toctree-l1"><a class="reference internal" href="prp/f_statistic/">F-statistic of manner separability</a>
                   </li>
               </ul>
-              <p class="caption"><span class="caption-text">Temporal Response Function</span></p>
+              <p class="caption"><span class="caption-text">Temporal response function</span></p>
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="trf/quick_guide/">Quick guide</a>
                   </li>
@@ -108,9 +112,11 @@
 <li>TRF estimation with support for parallel processing</li>
 </ul>
 <h2 id="whats-new">What's new?</h2>
+<p>04/17/2026: [Version 0.2.1] Added a new <code>make_predictors_from_textgrids</code> function for generating predictors from TextGrid annotations of the stimuli, and fixed a few things:
+- Updated environment.yaml to include <code>textgrids</code> package installation
+- Fixed bugs in the boosting script for TRF estimation and the example job script</p>
 <p>04/07/2026: [Version 0.2.0] Now including a <code>trf</code> module for running TRF analysis. A quick guide for using it is available. More detailed documentation will be provided in the future.</p>
-<p>03/24/2026: Added a get_values() function for more convinently getting PRP amplitude and F-statistic values at specific time points/intervals and at specific electrodes. See <em>Extracting PRP amplitudes</em> and <em>Extracting F-statistics</em> in the PRP basics and F-statistic sections.</p>
-<p>01/15/2026: Added a combine() utility to concatenate multiple datasets (see PRP basics); fixed a bug with recode().</p>
+<p><em>See more in <a href="history/">Update history</a>.</em></p>
 <h2 id="quick-example">Quick example</h2>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">neuraspeech</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ns</span>
 
@@ -127,7 +133,7 @@
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="install/" class="btn btn-neutral float-right" title="Installation">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="history/" class="btn btn-neutral float-right" title="Update history">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -155,7 +161,7 @@
     
     
     
-      <span><a href="install/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="history/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
@@ -175,5 +181,5 @@
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2026-04-08 03:37:05.047367+00:00
+Build Date UTC : 2026-04-17 23:11:30.983715+00:00
 -->

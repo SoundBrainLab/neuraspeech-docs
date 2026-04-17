@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Installation - Neuraspeech</title>
+    <title>Update history - Neuraspeech</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -14,8 +14,8 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Installation";
-        var mkdocs_page_input_path = "install.md";
+        var mkdocs_page_name = "Update history";
+        var mkdocs_page_input_path = "history.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -46,21 +46,15 @@
                 <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
                 </li>
               </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../history/">Update history</a>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Update history</a>
+    <ul class="current">
+    </ul>
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">Getting started</span></p>
-              <ul class="current">
-                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Installation</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#step-1-install-mamba">Step 1. Install Mamba</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#step-2-download-repository">Step 2. Download repository</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#step-3-create-environment">Step 3: Create environment</a>
-    </li>
-    </ul>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../install/">Installation</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Phoneme-related potential</span></p>
@@ -91,10 +85,9 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-          <li class="breadcrumb-item">Getting started</li>
-      <li class="breadcrumb-item active">Installation</li>
+      <li class="breadcrumb-item active">Update history</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/zc-guo/neuraspeech/edit/master/docs/install.md">Edit on zc-guo/neuraspeech</a>
+          <a href="https://github.com/zc-guo/neuraspeech/edit/master/docs/history.md">Edit on zc-guo/neuraspeech</a>
     </li>
   </ul>
   <hr/>
@@ -102,40 +95,19 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="installation">Installation</h1>
-<p>This toolbox is built using primarily <code>eelbrain</code>. The following guide will walk you through how to install and set up the Python environment for the toolbox.</p>
-<h2 id="step-1-install-mamba">Step 1. Install Mamba</h2>
-<p>We use <code>mamba</code> to create and manage the environment.</p>
-<p>The recommended way to get <code>mamba</code> is to use Miniforge:</p>
-<ol>
-<li>Go to the <a href="https://conda-forge.org/download/">Miniforge download page</a></li>
-<li>Download for your operating system (Windows, macOS, or Linux). For Windows, just run the installer .exe and accept the default options during installation. For macOS, open the Terminal, navigate to the folder where the installer .sh file is saved (<code>cd PATH/TO/THE/FOLDER</code>), and run:</li>
-</ol>
-<p><div class="highlight"><pre><span></span><code>./Miniforge3-MacOSX-arm64.sh
-</code></pre></div>
-(Replace with <code>Miniforge3-MacOSX-x86_64.sh</code> if using Intel)</p>
-<p>Alternatively, if you already have Anaconda installed, you may also install <code>mamba</code> into the base environment from <code>conda-forge</code> (however, solving the environments may take a long time, so this is not recommended):</p>
-<div class="highlight"><pre><span></span><code>conda<span class="w"> </span>install<span class="w"> </span>-n<span class="w"> </span>base<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>mamba
-</code></pre></div>
-<p>You can verify <code>mamba</code> installation by running:</p>
-<div class="highlight"><pre><span></span><code>mamba<span class="w"> </span>--version
-</code></pre></div>
-<h2 id="step-2-download-repository">Step 2. Download repository</h2>
-<p>Download the Gitbub repository of the toolbox and unzip it. Inside, you should see a folder called "neuraspeech" and documents like README.md, requirements.yml, etc.</p>
-<h2 id="step-3-create-environment">Step 3: Create environment</h2>
-<p>Open Terminal or Miniforge/Anaconda Prompt, navigate to the directory of that folder, and then run:</p>
-<div class="highlight"><pre><span></span><code>mamba<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>environment.yml
-</code></pre></div>
-<p>This will create a Python environment called "neuraspeech" with required dependencies installed. You can activate this environment in the prompt or terminal using:</p>
-<div class="highlight"><pre><span></span><code>mamba<span class="w"> </span>activate<span class="w"> </span>neuraspeech
-</code></pre></div>
-<p>If you're using a code editor like VS Code, you can choose the installed environment by selecting its name in the top right corner.</p>
+                <h1 id="update-history">Update history</h1>
+<p>04/17/2026: [Version 0.2.1] Added a new <code>make_predictors_from_textgrids</code> function for generating predictors from TextGrid annotations of the stimuli, and fixed a few things:
+- Updated environment.yaml to include <code>textgrids</code> package installation
+- Fixed bugs in the boosting script for TRF estimation and the example job script</p>
+<p>04/07/2026: [Version 0.2.0] Now including a <code>trf</code> module for running TRF analysis. A quick guide for using it is available. More detailed documentation will be provided in the future.</p>
+<p>03/24/2026: Added a get_values() function for more convinently getting PRP amplitude and F-statistic values at specific time points/intervals and at specific electrodes. See <em>Extracting PRP amplitudes</em> and <em>Extracting F-statistics</em> in the PRP basics and F-statistic sections.</p>
+<p>01/15/2026: Added a combine() utility to concatenate multiple datasets (see PRP basics); fixed a bug with recode().</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../history/" class="btn btn-neutral float-left" title="Update history"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../prp/prepare_data/" class="btn btn-neutral float-right" title="Preparing your data">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../install/" class="btn btn-neutral float-right" title="Installation">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -162,10 +134,10 @@
         </span>
     
     
-      <span><a href="../history/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../prp/prepare_data/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../install/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
