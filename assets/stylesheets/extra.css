@@ -2,3 +2,8 @@
 .wy-side-nav-search {
     background-color: #444444 !important;   /* light gray */
 }
+
+/* Widen the main content area in the ReadTheDocs theme */
+.wy-nav-content {
+    max-width: none;
+}
