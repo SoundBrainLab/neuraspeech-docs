@@ -15,7 +15,7 @@
       <script>
         // Current page data
         var mkdocs_page_name = "Preparing your data";
-        var mkdocs_page_input_path = "prp\\prepare_data.md";
+        var mkdocs_page_input_path = "trf\\prepare_data.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -56,21 +56,21 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Phoneme-related potential</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../prp/prepare_data/">Preparing your data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../prp/prp_basics/">PRP basics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../prp/f_statistic/">F-statistic of manner separability</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Temporal response function</span></p>
               <ul class="current">
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">Preparing your data</a>
     <ul class="current">
     </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../prp_basics/">PRP basics</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../f_statistic/">F-statistic of manner separability</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">Temporal response function</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../trf/prepare_data/">Preparing your data</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../trf/env_onset_preds/">Generating acoustic envelope and onset predictors</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../env_onset_preds/">Generating acoustic envelope and onset predictors</a>
                   </li>
               </ul>
       </div>
@@ -87,10 +87,10 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
-          <li class="breadcrumb-item">Phoneme-related potential</li>
+          <li class="breadcrumb-item">Temporal response function</li>
       <li class="breadcrumb-item active">Preparing your data</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/zc-guo/neuraspeech/edit/master/docs/prp/prepare_data.md">Edit on zc-guo/neuraspeech</a>
+          <a href="https://github.com/zc-guo/neuraspeech/edit/master/docs/trf/prepare_data.md">Edit on zc-guo/neuraspeech</a>
     </li>
   </ul>
   <hr/>
@@ -99,79 +99,49 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="preparing-your-data">Preparing your data</h1>
-<p>Once the environment is installed, make sure that you've prepared your EEG data in a format expected by the toolbox for PRP analysis. Specifically, it is assumed that:</p>
+<p>Once the environment is installed, make sure that you have the following:</p>
+<p>Once the environment is installed, make sure you have the following files prepared:</p>
 <ol>
 <li>
-<p>You've done all the preprocessing (e.g., filtering, ICA, resampling, etc).</p>
+<p><strong>Stimulus files</strong><br />
+   Place all speech or audio stimuli used in your EEG listening experiment in a single folder. Each stimulus should be saved as an individual <code>.wav</code> file.</p>
 </li>
 <li>
-<p><strong>You've extracted all EEG responses time-locked to all instances of each phoneme and saved the results to a .mat file.</strong></p>
+<p><strong>Preprocessed EEG files</strong><br />
+   This toolbox assumes that EEG preprocessing has already been completed, including steps such as filtering, ICA, resampling, and epoching. The preprocessed data should be saved as <code>mne.Epochs</code> in <code>.fif</code> files in the same folder. Each epoch should correspond to one stimulus audio track.</p>
 </li>
+<li>
+<p><strong>Metadata file</strong><br />
+   Prepare a <code>.csv</code> spreadsheet that lists each EEG data file and its associated metadata. This spreadsheet will be used to link EEG data to the corresponding stimulus files. At minimum, the metadata file should include:</p>
+</li>
+<li>
+<p>A column containing the EEG data filenames.</p>
+</li>
+<li>A column containing the stimulus filenames, including file extensions, for all epochs in the corresponding EEG file. Multiple stimulus filenames should be separated by semicolons (<code>;</code>).</li>
 </ol>
-<p>For example, if your clean EEG have 32 channels with 128-Hz sampling rate and you extract PRPs with a duration of 0.5 s for 10,000 phoneme instances, then the .mat file should contain a 3D EEG array with shape of 10000 x 32 x 64. In the file, there should also be cell object with shape like 10000 x 1 containing the phoneme label for each corresponding EEG response. By default, it is assumed that the field names of the EEG array and labels are "eegs" and "phones", respetively.</p>
-<p>It is recommended that you name the .mat file following the BIDS convention. For example, data from subject 01 completing the Alice task in noise condition may be saved as "sub-01_task-alice_cond-noise.mat". Put all .mat files like this in the same folder.</p>
-<p>Finally, you need to have a .csv file providing the electrode names and x, y, z coordinates of the electrodes for the montage you used to collect EEG. The electrode name is in the "ch_name" column and the next three columns are the coordinates:</p>
+<p>For example, a minimal metadata file may look like this:</p>
 <table>
 <thead>
 <tr>
-<th>ch_name</th>
-<th>x</th>
-<th>y</th>
-<th>z</th>
+<th>filename</th>
+<th>stim</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Fp1</td>
-<td>-27.03339386</td>
-<td>83.20023346</td>
-<td>-3.054935217</td>
-</tr>
-<tr>
-<td>AF3</td>
-<td>-35.56089783</td>
-<td>76.26059723</td>
-<td>24.12797737</td>
-</tr>
-<tr>
-<td>F7</td>
-<td>-70.7743454</td>
-<td>51.42057037</td>
-<td>-3.054935217</td>
-</tr>
-<tr>
-<td>F3</td>
-<td>-47.70734787</td>
-<td>58.91366959</td>
-<td>43.76761246</td>
-</tr>
-<tr>
-<td>FC1</td>
-<td>-32.80028152</td>
-<td>32.80028152</td>
-<td>74.23407745</td>
-</tr>
-<tr>
-<td>FC5</td>
-<td>-77.72145081</td>
-<td>29.83447075</td>
-<td>27.04987144</td>
-</tr>
-<tr>
-<td>...</td>
-<td></td>
-<td></td>
-<td></td>
+<td>sub-01_task-alice.fif</td>
+<td>track1.wav;track2.wav;track3.wav;track4.wav;track5.wav</td>
 </tr>
 </tbody>
 </table>
-<p>Because this PRP data extraction step is highly specific to the dataset and how the continuous speech sound tracks are presented, a standard pipeline for the data extraction has not been implemented yet in the toolbox. Please contact Zhe-chen Guo (zcguo@northwestern.edu) for an example script. </p>
+<p>In this example, <code>sub-01_task-alice.fif</code> contains five epochs, and the <code>stim</code> column lists the corresponding stimulus files in epoch order, separated by semicolons.</p>
+<p>You are encouraged to add any additional metadata columns that may be useful for your analysis, such as participant ID, session, listening condition, etc. See <code>misc/example_metadata.csv</code> for an example.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../../install/" class="btn btn-neutral float-left" title="Installation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../prp_basics/" class="btn btn-neutral float-right" title="PRP basics">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../prp/f_statistic/" class="btn btn-neutral float-left" title="F-statistic of manner separability"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../env_onset_preds/" class="btn btn-neutral float-right" title="Generating acoustic envelope and onset predictors">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -198,10 +168,10 @@
         </span>
     
     
-      <span><a href="../../install/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../../prp/f_statistic/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../prp_basics/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../env_onset_preds/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
