@@ -112,12 +112,10 @@
 <li>
 <p><strong>Metadata file</strong><br />
    Prepare a <code>.csv</code> spreadsheet that lists each EEG data file and its associated metadata. This spreadsheet will be used to link EEG data to the corresponding stimulus files. At minimum, the metadata file should include:</p>
-</li>
-<li>
-<p>A column containing the EEG data filenames.</p>
-</li>
+<ul>
+<li>A column containing the EEG data filenames.</li>
 <li>A column containing the stimulus filenames, including file extensions, for all epochs in the corresponding EEG file. Multiple stimulus filenames should be separated by semicolons (<code>;</code>).</li>
-</ol>
+</ul>
 <p>For example, a minimal metadata file may look like this:</p>
 <table>
 <thead>
@@ -135,6 +133,8 @@
 </table>
 <p>In this example, <code>sub-01_task-alice.fif</code> contains five epochs, and the <code>stim</code> column lists the corresponding stimulus files in epoch order, separated by semicolons.</p>
 <p>You are encouraged to add any additional metadata columns that may be useful for your analysis, such as participant ID, session, listening condition, etc. See <code>misc/example_metadata.csv</code> for an example.</p>
+</li>
+</ol>
               
             </div>
           </div><footer>

@@ -772,8 +772,7 @@ ns.trf.make_gammatone_predictors(
 <li>track1~gammatone-on-1.pickle</li>
 <li>track1~gammatone-1.pickle</li>
 </ul>
-<p>The filename before the tilde (~) is the stimulus filename without the file extension. The gammatone suffix corresponds to the <code>predictor_name</code> you specified. The -on suffix indicates that the file contains an acoustic onset predictor; files without -on contain envelope predictors. The final number indicates the number of frequency bands. Here -8 corresponds to <code>n_bands</code> = 8.</p>
-<p>The function also generates corresponding broadband envelope and onset predictors, indicated by the -1 suffix. These predictors contain only one frequency band and won't be used in this tutorial, but they may be useful for other analyses.</p>
+<p>The filename before the tilde (~) is the stimulus filename without the file extension. The gammatone suffix corresponds to the <code>predictor_name</code> you specified. The -on suffix indicates that the file contains an acoustic onset predictor; files without -on contain envelope predictors. The final number indicates the number of frequency bands. Here -8 corresponds to <code>n_bands</code> = 8. The function also generates corresponding broadband envelope and onset predictors, indicated by the -1 suffix. These predictors contain only one frequency band and won't be used in this tutorial, but they may be useful for other analyses.</p>
 <p>If you load in these files (using <code>eelbrain.load.unpickle()</code>), you'll find that they are saved as <code>NDVar</code> objects from the <code>eelbrain</code> package.</p>
 <p>As shown later in the tutorial, you can include the multiband envelope and onset predictors in a TRF model by specifying ['gammatone-8', 'gammatone-on-8']. The package will then locate the corresponding predictor files and fit the model.</p>
 </div>
