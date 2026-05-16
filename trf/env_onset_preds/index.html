@@ -640,7 +640,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-2">
@@ -658,7 +658,6 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     <span class="s1">'f_min'</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>        <span class="c1"># Minimum frequency in Hz of the filterbank</span>
     <span class="s1">'f_max'</span><span class="p">:</span> <span class="mi">8000</span><span class="p">,</span>      <span class="c1"># Maximum frequency in Hz of the filterbank</span>
     <span class="s1">'n'</span><span class="p">:</span> <span class="mi">256</span><span class="p">,</span>           <span class="c1"># Number of filter channels (note that this is NOT the number of frequency bands in the final predictor output)</span>
-    <span class="s1">'tstep'</span><span class="p">:</span> <span class="mf">0.001</span><span class="p">,</span>     <span class="c1"># Time step size in seconds of the output spectrogam (but will be resampled to match the EEG sampling rate)</span>
     <span class="s1">'location'</span><span class="p">:</span> <span class="s1">'left'</span>  <span class="c1"># gammatone sample at beginning of integration window</span>
 <span class="p">}</span>
 </pre></div>
@@ -667,7 +666,6 @@ gammatone_bank_cfgs = {
     'f_min': 20,        # Minimum frequency in Hz of the filterbank
     'f_max': 8000,      # Maximum frequency in Hz of the filterbank
     'n': 256,           # Number of filter channels (note that this is NOT the number of frequency bands in the final predictor output)
-    'tstep': 0.001,     # Time step size in seconds of the output spectrogam (but will be resampled to match the EEG sampling rate)
     'location': 'left'  # gammatone sample at beginning of integration window
 }</div>
 </div>

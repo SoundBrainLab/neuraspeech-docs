@@ -76,6 +76,12 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#using-the-configuration-file">Using the configuration file</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#pro-tips">Pro tips</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1-concatenate-eeg-and-stimulus-predictors">1. Concatenate EEG and stimulus predictors</a>
+    </li>
+        </ul>
+    </li>
     </ul>
                   </li>
               </ul>
@@ -736,11 +742,13 @@ Done. Successfully prepared EEG datasets have been saved to: C:\Users\xyc6648\On
 </li>
 <li><p><code>channels_to_drop</code>: List of EEG channels to remove from the data. In this example, the two mastoid electrodes are still included in the EEG files, so we drop them here.</p>
 </li>
-<li><p><code>duration_mode</code>: EEG epochs may be longer than the corresponding stimuli or the stimulus files may differ in duration. This argument specifies how to handle duration differences. Two options are currently available:</p>
+<li><p><code>duration_mode</code>: EEG epochs may be longer than the corresponding stimuli or the stimulus files may differ in duration. This argument specifies how to handle duration differences. Three options are currently available:</p>
 <ul>
 <li><p><code>'min'</code>: Truncate all EEG epochs and stimulus predictors within each EEG data file to the shortest stimulus duration in that file. For example, if one EEG file contains five epochs corresponding to five audio tracks, and the shortest track is 50 s, then all epochs and predictors from that file will be truncated to 50 s before TRF analysis.</p>
 </li>
 <li><p><code>'fixed'</code>: Use a fixed duration for all epochs across all EEG data files. If <code>duration_mode = 'fixed'</code>, you must also provide <code>fixed_duration</code>, which specifies the duration in seconds, for example, <code>fixed_duration = 45</code>. The fixed duration cannot be longer than the shortest stimulus duration in the dataset.</p>
+</li>
+<li><p><code>'concat'</code>: See below.</p>
 </li>
 </ul>
 <p>The <code>duration_mode</code> setting will truncate the EEG accordingly in the output files but won't affect the stimulus predictors. However, it stores information about how duration was handled. The downstream TRF code will use this information to truncate the predictors when fitting the models.</p>
@@ -999,6 +1007,181 @@ example_eeg</div>
 <div class="clipboard-copy-txt" id="cell-4"># Load the configuration. By default it loads from 'neuraspeech / trf/ conf / conf.yaml', but you can pass a path to a different configuration file.
 config = ns.trf.load_config()
 ns.trf.prepare_eeg(config)</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=47639cd3">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="pro-tips">Pro tips<a class="anchor-link" href="#pro-tips">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=39e86d5b">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="1-concatenate-eeg-and-stimulus-predictors">1. Concatenate EEG and stimulus predictors<a class="anchor-link" href="#1-concatenate-eeg-and-stimulus-predictors">¶</a></h3>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3718d868">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>In the example above, all EEG epochs within each data file were trimmed to the minimum stimulus length before building the dataset. This approach is usually OK when stimuli have similar durations. However, it can lead to substantial data loss when stimulus lengths vary considerably, as illustrated in the left panel of the diagram below.</p>
+<p>To avoid this issue, <code>ns.trf.prepare_eeg()</code> allows users to set <code>duration_mode</code> to <code>'concat'</code>. In this mode, each EEG epoch is truncated only to the actual duration of its corresponding stimulus. The resulting EEG segments, together with their matching stimulus predictors, are then concatenated to form a single continuous track, as shown below:</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=67167b96">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><img alt="EEG concatenation" src="../images/epochs_concatenation.png"/></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e9c5696a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>To use this mode, do the following:</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=d890e4ad">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-5">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">ns</span><span class="o">.</span><span class="n">trf</span><span class="o">.</span><span class="n">prepare_eeg</span><span class="p">(</span>
+    <span class="n">eeg_data_path</span> <span class="o">=</span> <span class="s1">'C:/Users/xyc6648/OneDrive - Northwestern University/Desktop/research/ASD_eeg/ICA'</span><span class="p">,</span>
+    <span class="n">metadata_path</span> <span class="o">=</span> <span class="s1">'misc/example_metadata.csv'</span><span class="p">,</span>
+    <span class="n">output_path</span> <span class="o">=</span> <span class="s1">'eeg/prepared'</span><span class="p">,</span>
+    <span class="n">stim_path</span> <span class="o">=</span> <span class="s1">'stim/alice'</span><span class="p">,</span>
+    <span class="n">metadata_filename_col</span> <span class="o">=</span> <span class="s1">'filename'</span><span class="p">,</span>
+    <span class="n">metadata_stim_col</span> <span class="o">=</span> <span class="s1">'stim'</span><span class="p">,</span>
+    <span class="n">channels_to_drop</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'M1'</span><span class="p">,</span> <span class="s1">'M2'</span><span class="p">],</span>
+    <span class="n">duration_mode</span> <span class="o">=</span> <span class="s1">'concat'</span><span class="p">,</span> <span class="c1"># Set to 'concat'</span>
+    <span class="n">predictor_set_path</span> <span class="o">=</span> <span class="s1">'predictors/acou_pred_set'</span> <span class="c1"># Provide path to the predictor set if using 'concat' mode</span>
+<span class="p">)</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-5">ns.trf.prepare_eeg(
+    eeg_data_path = 'C:/Users/xyc6648/OneDrive - Northwestern University/Desktop/research/ASD_eeg/ICA',
+    metadata_path = 'misc/example_metadata.csv',
+    output_path = 'eeg/prepared',
+    stim_path = 'stim/alice',
+    metadata_filename_col = 'filename',
+    metadata_stim_col = 'stim',
+    channels_to_drop = ['M1', 'M2'],
+    duration_mode = 'concat', # Set to 'concat'
+    predictor_set_path = 'predictors/acou_pred_set' # Provide path to the predictor set if using 'concat' mode
+)</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b03b306a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Note that you will also need to provide the path to the predictor set, as the predictors must be concatenated in the same way as the EEG data. The function will create a new predictor folder using the original predictor set name plus a '_concat' suffix (e.gg., 'acou_pred_set_concat') under the 'predictors' folder.</p>
+<p>The concatenated predictors are named using the corresponding EEG filename before the '~' separator (e.g., '<em>sub-3000_04_ses-1_task-alice</em>~gammatone-1.pickle'. When you open the corresponding EEG output file, you will see that it has only one row with the 'stim' column containing the EEG data filename, which will be used by the TRF code to locate the matching concatenated predictors.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs celltag_hide_code">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs celltag_hide_code" id="cell-id=b7293e0b">
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=17679b34">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-6">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">example_eeg_concat</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-6">example_eeg_concat</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[11]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<figure><table border="1" cellpadding="2" frame="hsides" rules="none"><tr>
+<td style="text-align:left">#</td>
+<td style="text-align:left">filename</td>
+<td style="text-align:left">sub</td>
+<td style="text-align:left">ses</td>
+<td style="text-align:left">task</td>
+<td style="text-align:left">duration_mode</td>
+<td style="text-align:left">stim</td>
+</tr>
+<tr>
+<td style="text-align:left">0</td>
+<td style="text-align:left">sub-3000_04_ses-1_task-alice.fif</td>
+<td style="text-align:left">3000_04</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">alice</td>
+<td style="text-align:left">concat</td>
+<td style="text-align:left">sub-3000_04_ses-1_task-alice.fif</td>
+</tr></table>
+<figcaption>NDVars: eeg</figcaption></figure>
 </div>
 </div>
 </div>
