@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Submitting Slurm jobs - Neuraspeech</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../../assets/stylesheets/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Submitting Slurm jobs";
+        var mkdocs_page_input_path = "trf\\submit_slurm_job.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../assets/logo.svg" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../history/">Update history</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Getting started</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../install/">Installation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Phoneme-related potential</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../prp/prepare_data/">Preparing your data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../prp/prp_basics/">PRP basics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../prp/f_statistic/">F-statistic of manner separability</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Temporal response function</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../get_started/">Getting started</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../env_onset_preds/">Envelope and onset predictors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../prepare_eeg_data/">Preparing EEG data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../plot_eeg_stim/">Plotting EEG and stimuli</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../run_trf_model/">Running TRF model</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Submitting Slurm jobs</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#check-the-configuration-file">Check the configuration file</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#job-script">Job script</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Neuraspeech</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Temporal response function</li>
+      <li class="breadcrumb-item active">Submitting Slurm jobs</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/zc-guo/neuraspeech/edit/master/docs/trf/submit_slurm_job.md">Edit on zc-guo/neuraspeech</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="submitting-slurm-jobs">Submitting Slurm jobs</h1>
+<p>Using a computer cluster is optional but highly recommended. Below is an example using <a href="https://www.it.northwestern.edu/departments/it-services-support/research/computing/quest/">Northwestern Quest</a> (other institutions may have similar computational resources).</p>
+<p>It's assumed that you:
+1. Have a <a href="https://www.it.northwestern.edu/departments/it-services-support/research/computing/quest/quest-access-and-allocations.html">Quest allocation</a>;
+2. Have installed the <code>neuraspeech</code> environment on your allocation;
+3. Have some basic working knowledge about using <a href="https://rcdsdocs.it.northwestern.edu/start/quest/quest-intro.html#">Quest</a>.</p>
+<h2 id="check-the-configuration-file">Check the configuration file</h2>
+<p>The configuration file is located in <code>conf/conf.yaml</code> inside the <code>trf</code> folder. To use the same settings as in the <strong>Running TRF models section</strong>, specify the corresponding fields in the configuration file as shown below:</p>
+<p><div class="highlight"><pre><span></span><code><span class="nt">EEG</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">misc/example_metadata.csv</span>
+<span class="w">    </span><span class="nt">filename_col</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;filename&#39;</span>
+
+<span class="nt">TRF_estimation</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">eeg_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eeg/prepared</span>
+<span class="w">  </span><span class="nt">predictor_set_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">predictors/acou_pred_set</span>
+<span class="w">  </span><span class="nt">results_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">results</span>
+<span class="w">  </span><span class="nt">use_parallel_processing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="w">  </span><span class="nt">n_workers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"> </span><span class="c1"># NULL for using all available workers</span>
+<span class="w">  </span><span class="nt">include</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">sub</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;3000_04&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;3042_04&#39;</span><span class="p p-Indicator">]</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">exclude</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">models</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">full</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">gammatone-8</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">gammatone-on-8</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">onsets_only</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">gammatone-on-8</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">envelope_only</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">gammatone-8</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">skip_estimated_models</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">boosting_cfgs</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">tstart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-0.1</span>
+<span class="w">    </span><span class="nt">tstop</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
+<span class="w">    </span><span class="nt">error</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">l1</span>
+<span class="w">    </span><span class="nt">delta</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.005</span>
+<span class="w">    </span><span class="nt">basis</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span>
+<span class="w">    </span><span class="nt">partitions</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+<span class="w">    </span><span class="nt">test</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">    </span><span class="nt">selective_stopping</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+
+<span class="nt">random_seed</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2026</span>
+</code></pre></div>
+Note that you don't need change any fields not listed above, as they won't be used by the <code>ns.trf.run_boosting()</code> function. You can leave these other fields unspecified or at their default values.</p>
+<p>Also, note that you may want to set <code>n_workers</code> to <code>NULL</code> and remove the whole <code>sub: ['3000_04', '3042_04']</code> line for your own data and analyses. So please check if every field is specified correctly.</p>
+<h2 id="job-script">Job script</h2>
+<p>See <code>misc/example_job_script.sh</code> in the <code>trf</code> folder for an example Slurm job script. The comments in the script indicate which settings need to be changed for your own project.</p>
+<p>In most cases, using either the 'short' partition, which has a maximum runtime of 4 hours, or the 'normal' partition, which has a maximum runtime of 48 hours, should be sufficient. Setting ntasks-per-node to somewhere between 20 and 40 is usually a reasonable starting point; this controls how many workers are used for parallel processing.</p>
+<p>You may need to adjust these settings depending on the size of your dataset, the number of predictors, etc.</p>
+<p>Once the script looks OK, log in to Quest and submit it in the terminal:</p>
+<div class="highlight"><pre><span></span><code>sbatch<span class="w"> </span>example_job_script.sh
+</code></pre></div>
+<p>You can check the status of the submitted jobs by running:</p>
+<div class="highlight"><pre><span></span><code>sacct<span class="w"> </span>-X
+</code></pre></div>
+<p>The job status may initially remain PENDING for some time, which means the job is waiting in the queue. Once resources become available, the status should change to RUNNING. If the code finishes successfully, the final status will be COMPLETED.</p>
+<p>However, a job may fail because of an error in the code or because it exceeds the allotted runtime. In these cases, check the output log to identify the issue. It may take some trial and error to adjust the script, requested resources, or runtime settings before the job runs successfully.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../run_trf_model/" class="btn btn-neutral float-left" title="Running TRF model"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/zc-guo/neuraspeech" class="fa fa-code-fork" style="color: #fcfcfc"> zc-guo/neuraspeech</a>
+        </span>
+    
+    
+      <span><a href="../run_trf_model/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
