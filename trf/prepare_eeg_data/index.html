@@ -80,6 +80,8 @@
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#1-concatenate-eeg-and-stimulus-predictors">1. Concatenate EEG and stimulus predictors</a>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2-when-an-epoch-contains-mulitple-stimuli">2. When an epoch contains mulitple stimuli</a>
+    </li>
         </ul>
     </li>
     </ul>
@@ -89,6 +91,8 @@
                   <li class="toctree-l1"><a class="reference internal" href="../run_trf_model/">Running TRF model</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../submit_slurm_job/">Submitting Slurm jobs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../results_analysis/">Analyzing results</a>
                   </li>
               </ul>
       </div>
@@ -1142,7 +1146,7 @@ ns.trf.prepare_eeg(config)</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-6">
@@ -1167,7 +1171,7 @@ ns.trf.prepare_eeg(config)</div>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[11]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[6]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <figure><table border="1" cellpadding="2" frame="hsides" rules="none"><tr>
 <td style="text-align:left">#</td>
@@ -1190,6 +1194,144 @@ ns.trf.prepare_eeg(config)</div>
 <figcaption>NDVars: eeg</figcaption></figure>
 </div>
 </div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f308e712">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="2-when-an-epoch-contains-mulitple-stimuli">2. When an epoch contains mulitple stimuli<a class="anchor-link" href="#2-when-an-epoch-contains-mulitple-stimuli">¶</a></h3>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f030e95a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>So far, we have assumed that each EEG epoch corresponds to a single stimulus audio track, with semicolons (<code>;</code>) used as epoch separators when listing stimuli in the metadata file. However, <code>ns.trf.prepare_eeg()</code> can also handle cases in which one EEG epoch contains multiple stimulus tracks, as long as this is specified correctly in the metadata.</p>
+<p>Specifically, use plus signs (<code>+</code>) to indicate the sequence of stimulus tracks within the original EEG epoch. If there are pauses or silence intervals between stimuli, and you know their exact durations in seconds, you can include those durations in the sequence as well. In many cases, this is necessary for re-epoching the EEG data correctly.</p>
+<p>See the example metadata and schematic figure below for an illustration of how this works.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs celltag_hide_code">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs celltag_hide_code" id="cell-id=acdaa519">
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=122c550c">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-7">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">example_metadata</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-7">example_metadata.head(5)</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>filename</th>
+<th>stim</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>sub-01_ses-1_task-60bi_acq-2.fif</td>
+<td>track16.wav+track17.wav+track18.wav+track19.wav+track20.wav;track21.wav+trac...</td>
+</tr>
+<tr>
+<th>1</th>
+<td>sub-01_ses-1_task-60mo_acq-1.fif</td>
+<td>track1.wav+track2.wav+track3.wav+track4.wav+track5.wav;track6.wav+track7.wav...</td>
+</tr>
+<tr>
+<th>2</th>
+<td>sub-01_ses-1_task-75bi_acq-3.fif</td>
+<td>track31.wav+track32.wav+track33.wav+track34.wav+track35.wav;track36.wav+trac...</td>
+</tr>
+<tr>
+<th>3</th>
+<td>sub-01_ses-1_task-75mo_acq-4.fif</td>
+<td>track46.wav+track47.wav+track48.wav+track49.wav+track50.wav;track51.wav+trac...</td>
+</tr>
+<tr>
+<th>4</th>
+<td>sub-01_ses-2_task-60bi_acq-2.fif</td>
+<td>track16.wav+track17.wav+track18.wav+track19.wav+track20.wav;track21.wav+trac...</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=eaa13a1f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><img alt="Multi-stimuli epochs" src="../images/epochs_with_multiple_stim.png"/></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6280c452">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>However, it is generally recommended to avoid this kind of re-epoching when possible, because it can introduce potential misalignment issues. If you want each EEG epoch to correspond to a single audio track, it is better to set this up directly in the experiment script before data collection.</p>
 </div>
 </div>
 </div>
