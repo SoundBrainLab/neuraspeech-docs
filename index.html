@@ -90,6 +90,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="trf/textgrid_preds/">Predictors from TextGrids</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="trf/pitch_preds/">Pitch predictors</a>
+                  </li>
               </ul>
       </div>
     </div>
@@ -126,6 +128,8 @@
 <li>TRF estimation with support for parallel processing</li>
 </ul>
 <h2 id="whats-new">What's new?</h2>
+<p>07/10/2026:
+<strong>[Version 0.2.8]</strong> Added <code>make_pitch_predictors()</code> to <code>trf</code> module to extract pitch contours and generate pitch predictors. This new functionality is implemented using <a href="https://pypi.org/project/praat-parselmouth/">praat-parselmouth</a> so you would need to install it or update your neuraspeech environment using the updated <code>environment.yml</code>. See the <em>Pitch predictors</em> tab for usage.</p>
 <p>06/29/2026:
 <strong>[Version 0.2.7]</strong> Added <code>make_predictors_from_textgrids()</code> to <code>trf</code> module to allow predictor generation using TextGrid annotations of the audio stimuli.</p>
 <p>06/11/2026:
@@ -198,5 +202,5 @@ Added documentation for running TRF models and submitting Slurm jobs.</p>
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2026-06-29 22:10:14.892468+00:00
+Build Date UTC : 2026-07-11 03:12:53.009400+00:00
 -->

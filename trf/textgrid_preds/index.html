@@ -92,6 +92,8 @@
     </li>
     </ul>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pitch_preds/">Pitch predictors</a>
+                  </li>
               </ul>
       </div>
     </div>
@@ -597,7 +599,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>The <code>make_predictors_from_textgrids()</code> function in the <code>trf</code> module generates impulse predictors for selected events in TextGrid files. For example, if you include 10 event types for a stimulus track with <em>T</em> time points, the resulting predictor for that track will be a sparse 2D matrix with shape 10 × <em>T</em>. Values are set to 1 at time points where an event occurs, and all other values are set to 0.</p>
+<p>The <code>make_predictors_from_textgrids()</code> function in the <code>trf</code> module generates unit impulse predictors for selected events in TextGrid files. For example, if you include 10 event types for a stimulus track with <em>T</em> time points, the resulting predictor for that track will be a sparse 2D matrix with shape 10 × <em>T</em>. Values are set to 1 at time points where an event occurs, and all other values are set to 0.</p>
 <p>Below is an example using phoneme predictors:</p>
 </div>
 </div>
@@ -1209,6 +1211,7 @@ ns.trf.plot_schematic(
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../results_analysis/" class="btn btn-neutral float-left" title="Analyzing results"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../pitch_preds/" class="btn btn-neutral float-right" title="Pitch predictors">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -1237,6 +1240,8 @@ ns.trf.plot_schematic(
     
       <span><a href="../results_analysis/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
+    
+      <span><a href="../pitch_preds/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
