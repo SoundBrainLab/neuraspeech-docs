@@ -84,6 +84,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../trf/textgrid_preds/">Predictors from TextGrids</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../trf/table_preds/">Predictors from tables</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../trf/pitch_preds/">Pitch predictors</a>
                   </li>
               </ul>
@@ -112,6 +114,8 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="update-history">Update history</h1>
+<p>07/12/2026:
+<strong>[Version 0.2.9]</strong> Added <code>make_predictors_from_tables()</code> to <code>trf</code> module to allow generation of impulse-like predictors using tables or spreadsheets. See the <em>Predictors from tables</em> tab for usage.</p>
 <p>07/10/2026:
 <strong>[Version 0.2.8]</strong> Added <code>make_pitch_predictors()</code> to <code>trf</code> module to extract pitch contours and generate pitch predictors. This new functionality is implemented using <a href="https://pypi.org/project/praat-parselmouth/">praat-parselmouth</a> so you would need to install it or update your neuraspeech environment using the updated <code>environment.yml</code>. See the <em>Pitch predictors</em> tab for usage.</p>
 <p>06/29/2026:

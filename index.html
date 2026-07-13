@@ -90,6 +90,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="trf/textgrid_preds/">Predictors from TextGrids</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="trf/table_preds/">Predictors from tables</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="trf/pitch_preds/">Pitch predictors</a>
                   </li>
               </ul>
@@ -128,15 +130,12 @@
 <li>TRF estimation with support for parallel processing</li>
 </ul>
 <h2 id="whats-new">What's new?</h2>
+<p>07/12/2026:
+<strong>[Version 0.2.9]</strong> Added <code>make_predictors_from_tables()</code> to <code>trf</code> module to allow generation of impulse-like predictors using tables or spreadsheets. See the <em>Predictors from tables</em> tab for usage.</p>
 <p>07/10/2026:
 <strong>[Version 0.2.8]</strong> Added <code>make_pitch_predictors()</code> to <code>trf</code> module to extract pitch contours and generate pitch predictors. This new functionality is implemented using <a href="https://pypi.org/project/praat-parselmouth/">praat-parselmouth</a> so you would need to install it or update your neuraspeech environment using the updated <code>environment.yml</code>. See the <em>Pitch predictors</em> tab for usage.</p>
 <p>06/29/2026:
 <strong>[Version 0.2.7]</strong> Added <code>make_predictors_from_textgrids()</code> to <code>trf</code> module to allow predictor generation using TextGrid annotations of the audio stimuli.</p>
-<p>06/11/2026:
-<strong>[Version 0.2.6]</strong> Expanded <code>prepare_eeg()</code> functionality of <code>trf</code> module so that it can now handles EEG epochs containing more than one stimulus. The plotting functions in the prp module now also support plotting standard errors around the mean curve.</p>
-<p>The TRF documentation has also been updated. It now covers the complete workflow for running neural tracking of acoustics as well as basic result analyses.</p>
-<p>05/29/2026:
-Added documentation for running TRF models and submitting Slurm jobs.</p>
 <p><em>See more in <a href="history/">Update history</a>.</em></p>
 <h2 id="quick-example">Quick example</h2>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">neuraspeech</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ns</span>
@@ -202,5 +201,5 @@ Added documentation for running TRF models and submitting Slurm jobs.</p>
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2026-07-11 03:12:53.009400+00:00
+Build Date UTC : 2026-07-13 01:55:23.593768+00:00
 -->
