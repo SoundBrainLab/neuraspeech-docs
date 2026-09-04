@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Introduction - Neuraspeech</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../../assets/stylesheets/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Introduction";
+        var mkdocs_page_input_path = "trf\\introduction.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../assets/logo.svg" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../history/">Update history</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Getting started</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../install/">Installation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Phoneme-related potential</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../prp/prepare_data/">Preparing your data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../prp/prp_basics/">PRP basics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../prp/f_statistic/">F-statistic of manner separability</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Temporal response function</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Introduction</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#event-related-potential">Event-related potential</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#trf-to-continuous-speech">TRF to continuous speech</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#multivariate-trf">Multivariate TRF</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#time-lagged-linear-regression">Time-lagged linear regression</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#regularization">Regularization</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#linear-and-time-invariant">Linear and time-invariant</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#stimulus-reconstruction">Stimulus reconstruction</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../get_started/">Getting started</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../env_onset_preds/">Envelope and onset predictors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../prepare_eeg_data/">Preparing EEG data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../plot_eeg_stim/">Plotting EEG and stimuli</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../run_trf_model/">Running TRF model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../submit_slurm_job/">Submitting Slurm jobs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../results_analysis/">Analyzing results</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../textgrid_preds/">Predictors from TextGrids</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../table_preds/">Predictors from tables</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pitch_preds/">Pitch predictors</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Neuraspeech</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Temporal response function</li>
+      <li class="breadcrumb-item active">Introduction</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/zc-guo/neuraspeech/edit/master/docs/trf/introduction.md">Edit on zc-guo/neuraspeech</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="introduction">Introduction</h1>
+<p>The temporal response function (TRF) is an analytic technique widely used to model the linear mapping relationship between <em>continuous</em>, <em>time-varying</em> stimuli such as audiobooks, spoken sentences, and videos and brain signals (EEG, MEG, etc.). It allows you to:</p>
+<ol>
+<li>
+<p><strong>Estimate the brain's impulse response to stimuli</strong>. </p>
+<p>You can construct a TRF model to predict neural responses from one or more stimulus features (e.g., speech envelope, pitch). Such a model is called a <em>forward</em> or <em>encoding</em> model. Using this model, you'll estimate a TRF that represents the brain's <em>impulse response</em> to each stimulus feature. Conceptually, you may think of it as being analogous to a traditional event-related potential (ERP) elicited to short, relatively static stimuli (e.g., tones, speech syllables).</p>
+</li>
+<li>
+<p><strong>Assess which stimulus features predict neural responses</strong></p>
+<p>By including multiple stimulus features in a forword, encoding TRF model, you can also determine which features contribute to predicting neural responses. In this case, we're doing multivariate TRF, often abbreviated as <em>mTRF</em>. Measures like Pearson correlation between predicted and actual neural resposnes and proportion of variance explained are typically used as metrics of prediction accuracy or <em>neural tracking</em>. If including a stimulus feature significantly improves neural tracking, it is taken as evidence that the feature is tracked/encoded in the brain.</p>
+</li>
+<li>
+<p><strong>Reconstruct the stimuli from neural responses</strong></p>
+<p>By reversing the relationship between stimuli and neural resposnes in a forward model, you can readily build a <em>backward</em> or <em>decoding</em> TRF model that predicts stimulus features from neural responses. In speech listening tasks, this backward model is popularly used to reconstruct the broadband envelope of the target speech as an index of auditory attention. Again, reconstruction accuracy can be quantified using metrics like Pearson correlation between the actual and reconstructed envelopes.</p>
+</li>
+</ol>
+<p>The rest of this introduction will provide a more detailed overview, focusing on the first and second points above. In addition, it is highly recommended to read through these two papers:</p>
+<ul>
+<li>
+<p><em><a href="https://elifesciences.org/articles/85012">Brodbeck et al. (2023). Eelbrain, a Python toolkit for time-continuous analysis with temporal response functions</a></em>. This article provides an excellent introduction to TRF analysis and to the Python <code>eelbeain</code> package, on which many utilities in <code>neuraspeech</code> are built. If you'd like to develop a deeper technical understanding of the functions and analyses used here, it is strongly recommended to get some familiarity with using <code>eelbrain</code>.</p>
+</li>
+<li>
+<p><em><a href="https://www.frontiersin.org/journals/human-neuroscience/articles/10.3389/fnhum.2016.00604/full">Crosse er al. (2016). The multivariate temporal response function (mTRF) toolbox: A MATLAB toolbox for relating neural signals to continuous stimuli</a></em>. This is a classic mTRF paper that introduces the MATLAB mTRF toolbox. Though we won't use MATLAB here, it's a good reading for udnerstanding the math behind TRF analysis. Of course, if you'll be using MATLAB, read through it and get familiar with the toolbox.</p>
+</li>
+</ul>
+<h2 id="event-related-potential">Event-related potential</h2>
+<p>As mentiomed above, the TRF is closely related to the ERP, a methodological workhorse that has driven decades of discovery in neuroscience. In a typical ERP paradigm, the same stimulus or stimuli of the same type, condition, etc. are presented over many repetitions. The recorded responses are epoched from stimulus onset and averaged to derive the ERP, the potential representing the brain's typical response to the stimuli. We then look at the amplitudes of the ERP peaks/valleys, the latencies of these peaks/valleys, the topography, the differences between conditions or participant groups, etc.</p>
+<p>Here we implictly assume that the stimulus can be reduced to an instantanous, impulse-like event beginnign at its onset, even though it actually has a duration. You may be comfortable with this assumption with relatively short, static stimuli like simple "ba/ga" syllables or a flash of an image. But what if your stimuli or the features you're interested in are continuous and change dynamically over time, such as the amplitude envelope of audiobook speech? Are there ways to estimate ERPs or relate such stimuli to brain responses?</p>
+<h2 id="trf-to-continuous-speech">TRF to continuous speech</h2>
+<p>Below is how the TRF address these questions. Let's consider EEG to broadband speech amplitude as an example. Think of the envelope as consisting of a <em>dense, continuous train of impulses</em> with each impulse's height scaled to the amplitude value, as illustrated in this image:</p>
+<p><img alt="envelope as impulses" src="../images/trf_intro_env_impulses.gif" /></p>
+<p>Each impulse is then assumed to evoke a response across time lags, like an ERP, but larger impulses evoke larger responses:</p>
+<p><img alt="impulse responses" src="../images/trf_intro_impulses_responses.gif" /></p>
+<p><em>The "ERP" that corresponds to the unit impulse (i.e., impulse with amplitude of 1) is called the TRF of the envelope.</em> </p>
+<p>Now we'll relate the envelope to the EEG signals through the TRF. As you can see in the above diagram, the impulses have overlapping influence in time. So as shown in the following animation, the EEG response at time <span class="arithmatex">\(t\)</span>, denoted as <span class="arithmatex">\(r(t)\)</span>, reflects influence from the envelope across multiple time lags. Specifically, it is the TRF (denoted as <span class="arithmatex">\(\beta\)</span>) at 0-ms lag scaled by the envelope (denoted as <span class="arithmatex">\(s\)</span>) at <span class="arithmatex">\(t\)</span> (i.e., <span class="arithmatex">\(\beta(0\)</span> <span class="arithmatex">\(ms)s(t)\)</span>), plus the TRF at 10-ms lag scaled by the envelope 10 ms ago (i.e., <span class="arithmatex">\(\beta(10\)</span> <span class="arithmatex">\(ms)s(t-10\)</span> <span class="arithmatex">\(ms)\)</span>), plus the TRF at 20-ms lag scaled by envelope 20 ms ago (i.e., <span class="arithmatex">\(\beta(20\)</span> <span class="arithmatex">\(ms)s(t-20\)</span> <span class="arithmatex">\(ms)\)</span>), and so on. </p>
+<p><img alt="trf convolution" src="../images/trf_intro_convolution.gif" /></p>
+<p>In this example the interval between time lags is 10 ms corrsponding to a sampling rate of 100 Hz and the lags range from 0 ms to 200 ms. However, the same principle applies to data of any sampling rates and you can use any arbitrary minimum and maximum time lags, denoted as <span class="arithmatex">\(\tau_{min}\)</span> and <span class="arithmatex">\(\tau_{max}\)</span>, respectively. So the formula at the end has a more general form:</p>
+<div class="arithmatex">\[
+r(t) = \sum_{\tau=\tau_{\min}}^{\tau_{\max}} \beta(\tau)\,s(t-\tau)
+\]</div>
+<p>Mathematically, what this formula is doing is called linear <em>convolution</em>: we'll get the continuous EEG response by convolving the envelope with its impulse response function, namely its TRF.</p>
+<p>Three additional things to be noted about this formula:</p>
+<ol>
+<li>
+<p>Since EEG is the dependent variable being predicted, the envelope (or stimulus features in general) is also referred to as a <em>predictor</em>.</p>
+</li>
+<li>
+<p><span class="arithmatex">\(\tau_{min}\)</span> and <span class="arithmatex">\(\tau_{max}\)</span> are hyperparameters you need to decide before model fitting and form the window over which the TRF is defined. The appropriate range of time lags depends on your hypotheses about the timescale or latency of neural responses to the stimulus features of intetest. For higher-order linguistic features, you may want to increase <span class="arithmatex">\(\tau_{max}\)</span> beyond 500 ms to capture later responses. For acoustic features like envelope, (<span class="arithmatex">\(\tau_{min}\)</span>, <span class="arithmatex">\(\tau_{max}\)</span>) = (-100 ms, 500 ms) should be a good staring point. Note that you can include negative lags like <span class="arithmatex">\(\tau_{min}\)</span> = -100 ms. In this case, we're modeling anticipatory or predictive brain responses to the stimuli. To see this, try plugging in a negative lag in the animation above.</p>
+</li>
+<li>
+<p><span class="arithmatex">\(\beta(\tau)\)</span> is sometimes called a filter kernel because the stimulus is convolved with it to predict the neural response. You may also see some people call it TRF weights/coefficients, reflecting the fact that, as we'll see, solving the TRF is typically framed as solving a regression problem. Other common notations include <span class="arithmatex">\(h(\tau)\)</span> and <span class="arithmatex">\(w(\tau)\)</span>. Unless otherwise specified, these terms and symbols generally refer to the same lag-dependent function in TRF analysis.</p>
+</li>
+</ol>
+<p>We'll dive a little bit deeper into how to estimate the TRF and the math behind it in later sections. For now, we have a tool to finding out the "ERP" to a continuous stimulus feature and using it to predict neural responses.</p>
+<h2 id="multivariate-trf">Multivariate TRF</h2>
+<p>To include multiple stimulus predictors, simply extend the TRF model as follows:</p>
+<div class="arithmatex">\[
+r(t) = \sum_{i}^{N} \sum_{\tau=\tau_{\min}}^{\tau_{\max}} \beta_i(\tau)\,s_i(t-\tau)
+\]</div>
+<p>The inner summation convolves each stimulus predictor <span class="arithmatex">\(s_i(t)\)</span> with its corresponding TRF while newly added the outer summation combines the predicted contributions of all <span class="arithmatex">\(N\)</span> predictors. In other words, the model estimates a separate TRF for each stimulus feature and sums their contributions to predict the neural response. We'll use such mTRF models more frequently than the single-predictor model above when analyzing EEG to naturalistic speech containing multiple features. These features may include amplitude envelopes across several frequency bands (i.e., a spectrogram), a combination of the envelope, pitch contour, and phonological features, etc.</p>
+<p>Sometimes not all stimulus predictors contribute to explaining brain responses. To find out which ones do, we can, for example, quantify the neural tracking as the Pearson's correlation between the observed and predicted EEG. Predictors that improve the correlation when added to the model are though to be encoded/tracked by the brain.</p>
+<p>The predictors don't have to be continuous curves like envelope. Impulse-like predictors can be used to model features like word suprisal. In such a predictor, an impulse scaled to the surprisal value of each word is placed at each word's onset and the rest of the predictor is filled with zeros.</p>
+<p>You can include as many predictors as you want, from acoustics to abstract linguistic annotations derived from sophisticated language models (e.g., <a href="https://direct.mit.edu/nol/article/4/2/318/114548/Cortical-Tracking-of-Continuous-Speech-Under">Xie et al., 2023</a>; <a href="https://www.cell.com/current-biology/fulltext/S0960-9822(18)30146-5?5952eaf7=ef28a21f#fig2">Broderick et al. 2018</a>; <a href="https://www.eneuro.org/content/10/7/ENEURO.0075-23.2023.abstract">Gillis et al., 2023</a>). If there are visual stimuli, you can also include visual features like video frame luminance and motion (e.g., <a href="https://www.sciencedirect.com/science/article/pii/S105381192200307X">Yu et al., 2022</a>).</p>
+<h2 id="time-lagged-linear-regression">Time-lagged linear regression</h2>
+<p>Now we address the elephant in the room: we still don't know the TRF(s). </p>
+<p>Let's look again at the derivation of the formula in the animation above. You may have noticed that it looks like the multiple regression formula <span class="arithmatex">\(y = \beta_0 + \beta_1x_1 + \beta_2x_2...\)</span> you saw in intro to statistics courses and the EEG response is predicted as a linear combination of the envelope amplitude values. So in fact, we can convert the convolution into a regression problem.</p>
+<p>To do this, we'll prepare the stimulus features just like how we prepare the dataframes in R and Python, where each row is an observation and each column is an independent variable. To illustrate the preparation, consider a simple example with amplitude envlope as the sole predictor and one EEG signal. Let's assume that the sampling rate is 100 Hz, the lag window ranges from <span class="arithmatex">\(\tau_{\min} = -50\)</span> <span class="arithmatex">\(ms\)</span> to <span class="arithmatex">\(\tau_{\max} = 200\)</span> <span class="arithmatex">\(ms\)</span>, and the entire EEG/envelope duration is 60,000 ms (1 minute).</p>
+<p>We first need a 2D matrix, denoted as <span class="arithmatex">\(\mathbf{S}\)</span>, where rows are time-lagged slices of the envelope that will each be multipled by the TRF, which we noew write as a column vector <span class="arithmatex">\(\boldsymbol{\beta}\)</span>. To build it, we set each cell <span class="arithmatex">\(\mathbf{S}_{t, \tau}\)</span> = <span class="arithmatex">\(s(t-\tau)\)</span>. So for the first row at <span class="arithmatex">\(t\)</span> = 0 ms, the beginning of EEG/envelope, we fill it accordingly starting at time lag <span class="arithmatex">\(\tau=\tau_{min}=-50\)</span> <span class="arithmatex">\(ms\)</span> and get <span class="arithmatex">\(s(0\)</span> $ms - (- 50 $ $ ms)) = s(50 $ $ ms)$ in the first position, move one sample (i.e., 10 ms) in time lag forward and get <span class="arithmatex">\(s(0\)</span> $ms - (- 40 $ $ ms)) = s(40 $ $ ms)$ in the second position, and so forth. Note that because we have negative lags here and are modeling predictive/anticipatory responses (see above), we have envelope values from the future (i.e., $s(50 $ $ ms), s(40 $ $ ms)...$). When <span class="arithmatex">\(\tau = 0\)</span> <span class="arithmatex">\(ms\)</span>, we're at the current time point. However, when <span class="arithmatex">\(\tau\)</span> turns positive, like 10 ms or 20 ms, we have <span class="arithmatex">\(s(-10\)</span> <span class="arithmatex">\(ms)\)</span>, <span class="arithmatex">\(s(-20\)</span> <span class="arithmatex">\(ms)\)</span>, and so on. As there's nothing before the beginning of the envelope, we set them to 0. Finally, we multiply the whole first row elementwise with the TRF and sum the results to predict the EEG value at $t = 0 $ <span class="arithmatex">\(ms\)</span>, or $r(0 $ <span class="arithmatex">\(ms)\)</span>.</p>
+<p><img alt="linear regression 1" src="../images/trf_intro_regression_1.gif" /></p>
+<p>We repeat the same operation for all rows to populate the rest of the matrix. At the very last time point <span class="arithmatex">\(t = 60,000\)</span> <span class="arithmatex">\(ms\)</span>, negative lags give you non-exisiting envelope values out of bounds like <span class="arithmatex">\(s(60,010\)</span> <span class="arithmatex">\(ms)\)</span>, so again they're zeroed out.</p>
+<p><img alt="linear regression 2" src="../images/trf_intro_regression_2.gif" /></p>
+<p>Now we have reformualted the convolution as a system of linear equations:</p>
+<div class="arithmatex">\[
+\mathbf{r}=\mathbf{S}\boldsymbol{\beta}
+\]</div>
+<p>where <span class="arithmatex">\(\mathbf{r}\)</span> is the EEG signal represented as a vector. Its length in samples, denoted as <span class="arithmatex">\(T\)</span>, depends on the duration of EEG data and the sampling rate. <span class="arithmatex">\(\mathbf{S}\)</span> has dimensions <span class="arithmatex">\(T\times L\)</span>, where <span class="arithmatex">\(L\)</span> is the length of the TRF in samples.</p>
+<p>If you've learned linear algebra before, you can easily solve for the TRF using the <em>normal equation</em>:</p>
+<div class="arithmatex">\[
+\bm{\hat{{\beta}}} = (\mathbf{S}^\mathsf{T}\mathbf{S})^{-1}\mathbf{S}^\mathsf{T}\mathbf{r}
+\]</div>
+<p>This closed-form solution gives you the best-fitting TRF that minimizes the squared errors between the actual and predicted EEG.</p>
+<h2 id="regularization">Regularization</h2>
+<p>However, in practice, we don't use the normal equation. Like any other machine-learning models, the issue is <em>overfitting</em>. With the normal equation your model can fit almost perfectly to the EEG data at hand but generalize very poorly to unseen data. This is an espeically tricky issue for EEG as EEG signals tend to have lower signal-to-noise ratios. The approach we use here to combat overfitting is <em>regularization</em>.</p>
+<p>To see how it works, consider this "math/logic" test you may have seen online: what is the next numnber ? in this sequence?</p>
+<div class="arithmatex">\[
+1, 3, 5, 7, ?
+\]</div>
+<p>The most intuitive answer is 9. You can also easily describe this intuition using the forumla <span class="arithmatex">\(f(x) = 2x - 1\)</span>, which gives you the odd number sequence (<span class="arithmatex">\(f(1) = 1, f(2) = 3, f(3) = 5, f(4) = 7, f(5) = 9\)</span>). However, you can actually construct a function that hits 1, 3, 5, and 7 in the first four terms but gives you an arbitrary number of your choice like 67, 2,026, 31,415,926 for the next term (using Lagrange interpolation). For example, when <span class="arithmatex">\(f(x) = \frac{29}{12}x^4 - \frac{145}{6}x^3 + \frac{1015}{12}x^2 - \frac{713}{6}x + 57\)</span>:</p>
+<div class="arithmatex">\[
+f(1) = 1 \\
+f(2) = 3 \\
+f(3) = 5 \\
+f(4) = 7 \\
+f(5) = 67 \\
+\]</div>
+<p>And the next term f(6) is 301. Yet, as the simpler odd-number function also correctly yields 1, 3, 5, and 7 and probably generalize better, it is preferred over the complex-looking function with crazy large coefficients for all polynomial terms. So all other things being equal, we resort to simpler models with smaller positive/negative to prevent overfitting, and this is called regularization.</p>
+<p>One way to achieve regularization in linear regrssion problems is to <em>penalize</em> large weights/coefficients. In the context of TRF modeling, we want our TRF curve to be constrained without large postive or negative deflections. To do this, we define a loss/cost function <span class="arithmatex">\(\mathcal{L}(\boldsymbol{\beta})\)</span>:</p>
+<div class="arithmatex">\[
+\mathcal{L}(\boldsymbol{\beta})
+=
+\underbrace{
+\left\|\mathbf{r}-\mathbf{S}\boldsymbol{\beta}\right\|_2^2
+}_{\text{prediction error}}
++
+\underbrace{
+\lambda\left\|\boldsymbol{\beta}\right\|_1
+}_{\text{penalty}}
+\]</div>
+<p>The prediction error term is the sum of squared differences between the predicted and observed EEG responses, which the normal equation minimizes. The <span class="arithmatex">\(\left\|\boldsymbol{\beta}\right\|_1\)</span> is the <em><span class="arithmatex">\(\ell_1\)</span> norm</em> of the TRF vector, which is the sum of the absolute values of all TRF wegiths (<span class="arithmatex">\(\left\|\boldsymbol{\beta}\right\|_1 = \sum_{j} \left|\beta_j\right|\)</span>). <span class="arithmatex">\(\lambda\)</span> is a regularization hyperparameter that controls how much penalty you want. And then the best-fitting TRF is the one that minimizes the whole loss function (not just the squared errors):</p>
+<div class="arithmatex">\[
+\hat{\boldsymbol{\beta}}
+=
+\underset{\boldsymbol{\beta}}{\arg\min}\, \mathcal{L}(\boldsymbol{\beta})
+\]</div>
+<p>Here we're doing an <span class="arithmatex">\(\ell_1\)</span>-regularized regression and the <span class="arithmatex">\(\ell_1\)</span> penalty is also called the <em>Lasso penalty</em>. </p>
+<p>You can also do <span class="arithmatex">\(\ell_2\)</span>-regularized or <em>ridge</em> regression using the <span class="arithmatex">\(\ell_2\)</span> penalty:</p>
+<div class="arithmatex">\[
+\lambda\left\|\boldsymbol{\beta}\right\|_2^2
+\]</div>
+<p>where <span class="arithmatex">\(\left\|\boldsymbol{\beta}\right\|_2^2 = \sum_{j} \beta_j^2\)</span>. This is the type of regularization used in the MATLAB mTRF toolbox (<a href="https://www.frontiersin.org/journals/human-neuroscience/articles/10.3389/fnhum.2016.00604/full">Crosse et al., 2016)</a>), which has a closed-form solution.</p>
+<p>The <span class="arithmatex">\(\ell_2\)</span> penalty shrinks TRF weights smoothly to small but non-zero values, while the <span class="arithmatex">\(\ell_1\)</span> penalty is more like to just zero out some of the weights. (This has to do with the gradients of these two types of penalties: the gradient for <span class="arithmatex">\(\ell_2\)</span>, <span class="arithmatex">\(2\lambda\boldsymbol{\beta}\)</span>, depends on <span class="arithmatex">\(\boldsymbol{\beta}\)</span>, so the pull towards zero becomes smaller as <span class="arithmatex">\(\boldsymbol{\beta}\)</span> gets smaller. In contrast, <span class="arithmatex">\(\ell_1\)</span> exerts a constant pull toward zero that only depends on <span class="arithmatex">\(\lambda\)</span>.) So you can say that the <span class="arithmatex">\(\ell_1\)</span> penalty is doing both regularization and <em>feature selection</em> (TRF weights that are exactly zeros may be discarded as being irrelvant).</p>
+<p>You can try to have the best of both worlds by using the <em>Elastic Net penalty</em>, which combines <span class="arithmatex">\(\ell_1\)</span> and  <span class="arithmatex">\(\ell_2\)</span> (<a href="https://academic.oup.com/jrsssb/article/67/2/301/7109482">Zou &amp; Hastie, 2005</a>):</p>
+<div class="arithmatex">\[
+\lambda \left(
+\alpha \left\|\boldsymbol{\beta}\right\|_1
++
+(1-\alpha)\left\|\boldsymbol{\beta}\right\|_2^2
+\right)
+\]</div>
+<p>where <span class="arithmatex">\(\alpha\)</span> is another hyperparameter that ranges between 0 and 1 and controls the balance between the types of penalties. </p>
+<p>The above are just some of the many different tricks to prevent overfitting. Currently, Elastic Net TRF is not implemented in the MATLAB mTRF toolbox or Eelbrain, but now you should have working knowledge about how to implement it if you're interested in using it. One important thing to note is that Eelbrain, which we'll be using to run TRF models in <code>neuraspeech</code>, uses the <em>boosting</em> algorithm together with early stopping and cross-validation to estimate TRFs and minimize overfitting. A detailed overview of the algorithm is beyond the scope of this introduction and you're encouraged to learn more about it in <a href="https://elifesciences.org/articles/85012">the Eelbrain paper</a>. The bottomline is: the TRF analyses you'll be doing through packages like Eelbrain or mTRF toolbox are essentially time-lagged linear regression with some flavor of regularization.</p>
+<h2 id="linear-and-time-invariant">Linear and time-invariant</h2>
+<p>The TRF analysis assumes that the brain is a <em>linear, time-invariant</em> system. You can clearly the linearity assumption from the fact that the neural response is predicted as linear combination of the stimulus features. Time invariance comes from the fact that the TRF <span class="arithmatex">\(\beta(\tau)\)</span> depends only on the time lag <span class="arithmatex">\(\tau\)</span> but not <span class="arithmatex">\(t\)</span>. A stimulus event should always evoke the same neural responses regardless of when it occurs during the recording. These may be an oversimplification of the complex brain dynamics, so be cognizant of the assumptions when interpreting TRF results.</p>
+<h2 id="stimulus-reconstruction">Stimulus reconstruction</h2>
+<p>A <em>backward</em>, <em>decoding</em> (m)TRF model can also be used to predict or reconstruct stimulus features from neural responses. Consider the same simple case with just the broadband envelope and one EEG signal and set the time lag window <span class="arithmatex">\((\tau_{min}, \tau_{max}) = (-100\)</span> <span class="arithmatex">\(ms, 500\)</span> <span class="arithmatex">\(ms)\)</span>. The TRF model to reconstruct envelope from the EEG is:</p>
+<div class="arithmatex">\[
+s(t) = \sum_{\tau=\tau_{\min}}^{\tau_{\max}} \beta(\tau)\,r(t+\tau)
+\]</div>
+<p>Now the stimulus feature is the dependent variable and the EEG signal is the predictor. Note that the input of <span class="arithmatex">\(r\)</span> is <span class="arithmatex">\(t+\tau\)</span>, not <span class="arithmatex">\(t-\tau\)</span>. To make sense of this, think iof the lag <span class="arithmatex">\(\tau\)</span> is the delay of the brain response respective to stimulus events. Typically, when an event occurs, the evoked response occurs later. Suppose that we're at <span class="arithmatex">\(t = 5,000\)</span> <span class="arithmatex">\(ms\)</span> of the stimulus, then the EEG from <span class="arithmatex">\(5,000\)</span> <span class="arithmatex">\(ms\)</span> to <span class="arithmatex">\(t + \tau_{max} = 5,000\)</span> <span class="arithmatex">\(ms + 500\)</span> <span class="arithmatex">\(ms= 5,500\)</span> <span class="arithmatex">\(ms\)</span> is the portion of the EEG signal reflecting the influence of our current stimulus impulse. And recall that negative lags capture anticipatory brain responses. So at <span class="arithmatex">\(t = 5,000\)</span> <span class="arithmatex">\(ms\)</span>, the response in anticipation of the current event is between <span class="arithmatex">\(t + \tau_{min} = 5,000\)</span> <span class="arithmatex">\(ms + (-100\)</span> $ms) = 4,900 $ <span class="arithmatex">\(ms\)</span> and <span class="arithmatex">\(5,000\)</span> <span class="arithmatex">\(ms\)</span>. So EEG samples from -4,900 ms to 5,500 ms are the predictors for the envelope at <span class="arithmatex">\(t = 5,000\)</span>.</p>
+<p>If EEG was recorded at multiple electrodes, we can includle all of them to jointly reconstruct the envelope using the decoding counterpart of the multivariate TRF model above:</p>
+<div class="arithmatex">\[
+s(t) = \sum_{i}^{N} \sum_{\tau=\tau_{\min}}^{\tau_{\max}} \beta_i(\tau)\,r_i(t+\tau)
+\]</div>
+<p>Now <span class="arithmatex">\(N\)</span> is the number of EEG electrodes instead of the number of stimulus predictors.</p>
+<p>The decoding model is commonly used in the <em>auditory attention decoding (AAD)</em> paradigm to assess selective attention. Participants listen to speech from multiple talkers while EEG is being recorded. The broadband speech envelope of each talker is extracted and contructed using the decoding TRF model and correlation between the actual and reconstructed envelope is measured. The talker for whom the correlation is highest is regarded as the talker that the listener was paying attention to.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../prp/f_statistic/" class="btn btn-neutral float-left" title="F-statistic of manner separability"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../get_started/" class="btn btn-neutral float-right" title="Getting started">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/zc-guo/neuraspeech" class="fa fa-code-fork" style="color: #fcfcfc"> zc-guo/neuraspeech</a>
+        </span>
+    
+    
+      <span><a href="../../prp/f_statistic/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../get_started/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../assets/javascripts/mathjax.js"></script>
+      <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
