@@ -219,11 +219,13 @@ r(t) = \sum_{i}^{N} \sum_{\tau=\tau_{\min}}^{\tau_{\max}} \beta_i(\tau)\,s_i(t-\
 \]</div>
 <p>The most intuitive answer is 9. You can also easily describe this intuition using the forumla <span class="arithmatex">\(f(x) = 2x - 1\)</span>, which gives you the odd number sequence (<span class="arithmatex">\(f(1) = 1, f(2) = 3, f(3) = 5, f(4) = 7, f(5) = 9\)</span>). However, you can actually construct a function that hits 1, 3, 5, and 7 in the first four terms but gives you an arbitrary number of your choice like 67, 2,026, 31,415,926 for the next term (using Lagrange interpolation). For example, when <span class="arithmatex">\(f(x) = \frac{29}{12}x^4 - \frac{145}{6}x^3 + \frac{1015}{12}x^2 - \frac{713}{6}x + 57\)</span>:</p>
 <div class="arithmatex">\[
-f(1) = 1 \\
-f(2) = 3 \\
-f(3) = 5 \\
-f(4) = 7 \\
-f(5) = 67 \\
+\begin{aligned}
+f(1) &amp;= 1 \\
+f(2) &amp;= 3 \\
+f(3) &amp;= 5 \\
+f(4) &amp;= 7 \\
+f(5) &amp;= 67
+\end{aligned}
 \]</div>
 <p>And the next term f(6) is 301. Yet, as the simpler odd-number function also correctly yields 1, 3, 5, and 7 and probably generalize better, it is preferred over the complex function with crazy large coefficients for all polynomial terms. So all other things being equal, we resort to simpler models with simpler assumptions or less extreme coefficients to prevent overfitting, and this is called regularization.</p>
 <p>One way to achieve regularization in linear regrssion problems is to explicitly <em>penalize</em> large weights/coefficients. In the context of TRF modeling, we want our TRF curve to be constrained without large postive or negative deflections. To do this, we define a loss/cost function <span class="arithmatex">\(\mathcal{L}(\boldsymbol{\beta})\)</span>:</p>
