@@ -126,7 +126,7 @@
    This toolbox assumes that EEG preprocessing has already been completed, including steps such as filtering, ICA, resampling, and epoching. The preprocessed data should be saved as <code>mne.Epochs</code> in <code>.fif</code> files in the same folder. <em>It is recommended that each EEG epoch correspond to a single stimulus audio file</em>. If an epoch contains responses to multiple consecutive audio files, specify this in the metadata file (see below).</p>
 </li>
 <li>
-<p><strong>TextGrid files</strong>
+<p><strong>TextGrid files</strong><br />
    TextGrid files containing the <em>phoneme annotations</em> of the audio tracks corresponding to the epochs. Each TextGrild should have the same filename as the corresponding audio except the extension (e.g., 'track1.TextGrid' for 'track1.wav'). Place all TextGrids in the same folder.</p>
 </li>
 <li>
