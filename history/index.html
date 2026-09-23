@@ -59,7 +59,9 @@
               </ul>
               <p class="caption"><span class="caption-text">Phoneme-related potential</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../prp/prepare_data/">Preparing your data</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../prp/get_started/">Getting started</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../prp/prp_extract/">PRP extraction</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../prp/prp_basics/">PRP basics</a>
                   </li>
@@ -116,6 +118,17 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="update-history">Update history</h1>
+<p>09/22/2026:
+<strong>[Version 0.3.0]</strong> Two major updates to PRP functionality:</p>
+<ol>
+<li>
+<p>All PRP-related functions and utilities have been moved into a dedicated prp module. <strong><em>They should now be accessed using <code>ns.prp.XXX</code></em></strong> instead of <code>ns.XXX</code>.</p>
+</li>
+<li>
+<p>A new PRP extraction function has been added to streamline PRP extraction from EEG data, TextGrid annotations, and metadata. Users no longer need to manually extract individual PRP instances and save them as .mat files. The legacy .mat-based workflow remains supported for backward compatibility.</p>
+</li>
+</ol>
+<p>For more information, see <a href="../prp/get_started/">Getting started</a> and <a href="../prp/prp_extract/">Extracting PRPs</a>.</p>
 <p>09/18/2026:
 <strong>[Version 0.2.10]</strong> Updated <code>plot_schematic()</code> of <code>trf</code> module with more options. See usage examples.</p>
 <p>09/04/2026:

@@ -57,7 +57,9 @@
               </ul>
               <p class="caption"><span class="caption-text">Phoneme-related potential</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../prp/prepare_data/">Preparing your data</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../prp/get_started/">Getting started</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../prp/prp_extract/">PRP extraction</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../prp/prp_basics/">PRP basics</a>
                   </li>
@@ -1727,7 +1729,7 @@ p_cb = p.plot_colorbar(label = 't-value')</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-14">
@@ -1747,7 +1749,8 @@ p_cb = p.plot_colorbar(label = 't-value')</div>
 <span class="n">test_res</span> <span class="o">=</span> <span class="n">eelbrain</span><span class="o">.</span><span class="n">testnd</span><span class="o">.</span><span class="n">TTestOneSample</span><span class="p">(</span>
     <span class="s1">'full_r'</span><span class="p">,</span> <span class="n">popmean</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">match</span> <span class="o">=</span> <span class="s1">'sub'</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">results_agg</span><span class="p">,</span> <span class="n">tail</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="c1"># One-tailed test</span>
     <span class="n">pmin</span> <span class="o">=</span> <span class="mf">0.05</span><span class="p">)</span>
-<span class="n">test_res</span><span class="o">.</span><span class="n">find_clusters</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="n">sig_regions</span> <span class="o">=</span> <span class="n">test_res</span><span class="o">.</span><span class="n">find_clusters</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="n">sig_regions</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-14"># Aggregate the results by subject across the two modality conditions
 # This ensures that there will only one prediction accuracy observation for each subject at each electrode, avoiding artificially inflating the number of observations due to repeated measures
@@ -1756,7 +1759,8 @@ results_agg = results.aggregate('sub', drop_bad = True)
 test_res = eelbrain.testnd.TTestOneSample(
     'full_r', popmean = 0, match = 'sub', data = results_agg, tail = 1, # One-tailed test
     pmin = 0.05)
-test_res.find_clusters(0.05)</div>
+sig_regions = test_res.find_clusters(0.05)
+sig_regions</div>
 </div>
 </div>
 </div>
@@ -1773,7 +1777,7 @@ test_res.find_clusters(0.05)</div>
 </div>
 </div>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[15]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[ ]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <figure><table border="1" cellpadding="2" frame="hsides" rules="none"><tr>
 <td style="text-align:left">#</td>
