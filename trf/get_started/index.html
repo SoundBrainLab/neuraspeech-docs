@@ -54,6 +54,8 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../install/">Installation</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../pipeline/">The NeuraSpeech pipeline</a>
+                  </li>
               </ul>
               <p class="caption"><span class="caption-text">Phoneme-related potential</span></p>
               <ul>
@@ -119,57 +121,9 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="getting-started">Getting started</h1>
-<p>Once the environment has been installed, ensure that you have the following files required for TRF analysis:</p>
-<ol>
-<li>
-<p><strong>Preprocessed EEG files</strong><br />
-   This toolbox assumes that EEG preprocessing has already been completed, including steps such as filtering, ICA, resampling, and epoching. The preprocessed data should be saved as <code>mne.Epochs</code> in <code>.fif</code> files in the same folder. <em>It is recommended that each EEG epoch correspond to a single stimulus audio file</em>. If an epoch contains responses to multiple consecutive audio files, specify this in the metadata file (see below).</p>
-</li>
-<li>
-<p><strong>Stimulus files</strong><br />
-   Place all speech or audio stimuli used in your EEG listening experiment in a single folder. Each stimulus should be saved as an individual <code>.wav</code> file.</p>
-</li>
-<li>
-<p><strong>Metadata file</strong><br />
-   Prepare a <code>.csv</code> spreadsheet that lists each EEG data file and its associated metadata. This spreadsheet will be used to link EEG data to the corresponding stimulus files. At minimum, the metadata file should include:</p>
-<ul>
-<li>A column containing the EEG data filenames.</li>
-<li>A column containing the stimulus filenames, including file extensions, for all epochs in the corresponding EEG file. Multiple stimulus filenames should be separated by semicolons (<code>;</code>).</li>
-</ul>
-<p>For example, a minimal metadata file may look like this:</p>
-<table>
-<thead>
-<tr>
-<th>filename</th>
-<th>stim</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>sub-01_task-alice.fif</td>
-<td>track1.wav;track2.wav;track3.wav;track4.wav;track5.wav</td>
-</tr>
-</tbody>
-</table>
-<p>In this example, <code>sub-01_task-alice.fif</code> contains five epochs, and the <code>stim</code> column lists the corresponding stimulus files in epoch order, separated by semicolons.</p>
-<p>If each epoch corresponds to multiple audio files, specify their filenames and presentation order using '+'. For example, the first epoch contains responses to tracks 1-3 and the second epoch contains responses to tracks 4-6:s</p>
-<table>
-<thead>
-<tr>
-<th>filename</th>
-<th>stim</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>sub-01_task-alice.fif</td>
-<td>track1.wav+track2.wav+track3.wav;track4.wav+track5.wav+track6.wav</td>
-</tr>
-</tbody>
-</table>
-<p>You are encouraged to add any additional metadata columns that may be useful for your analysis, such as participant ID, session, listening condition, etc. See <code>misc/example_metadata.csv</code> for an example.</p>
-</li>
-</ol>
+<p>For the TRF analysis, please prepare the following data components (see the NeuraSpeech Pipeline tab).</p>
+<p><img alt="trf components" src="../../assets/pipeline_images/require_components_trf.png" /></p>
+<p>TextGrid annotations are required only if you want to use annotated stimulus features or events (e.g., phoneme onsets) as predictors.</p>
               
             </div>
           </div><footer>
