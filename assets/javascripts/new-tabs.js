@@ -1,11 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll("a[href]").forEach((link) => {
-    const href = link.getAttribute("href");
+    const url = new URL(link.href, document.baseURI);
 
-    // Keep within-page anchors and special actions working normally.
-    if (/^(#|mailto:|tel:|javascript:)/i.test(href)) return;
-
-    link.target = "_blank";
-    link.relList.add("noopener", "noreferrer");
+    // Open only external HTTP/HTTPS links in new tabs.
+    if (
+      ["http:", "https:"].includes(url.protocol) &&
+      url.origin !== window.location.origin
+    ) {
+      link.target = "_blank";
+      link.relList.add("noopener", "noreferrer");
+    }
   });
 });
